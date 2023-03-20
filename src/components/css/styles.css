@@ -1,0 +1,45 @@
+.img-cac-logos{
+    margin: auto;
+    display: block;
+    padding: 5%;
+    width: 50%;
+}
+
+.rolCard{
+    cursor: pointer;
+    background: linear-gradient(to bottom, #f9d2d2, #ffaba8, #ff8279, #ff5546, #ff0202);
+}
+.rolCard:active{
+    transform: scale(0.99);
+}
+
+.planesCard{
+    cursor: pointer;
+    background:linear-gradient(to bottom, #f9f9d7, #fbfbb1, #fdfd8a, #fefe5c, #ffff04);
+}
+.planesCard:active{
+    transform: scale(0.99);
+}
+
+.ciclosCard{
+    cursor: pointer;
+    background: linear-gradient(to bottom, #cafbca, #aafea8, #88ff83, #5fff57, #00ff00);
+}
+.ciclosCard:active{
+    transform: scale(0.99);
+}
+
+.plantelesCard{
+    cursor: pointer;
+    background: linear-gradient(to bottom, #eff4f9, #b9d1ec, #87addf, #5589d2, #1266c2);
+}
+.plantelesCard:active{
+    transform: scale(0.99);
+}
+
+.card-text-cac{
+    font-size: 2.5vh;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+}
