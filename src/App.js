@@ -22,13 +22,8 @@ function App() {
   return (
 
     <div className="App-main-div" >
-      <header className="" >
-        <Header></Header>
-      </header>
 
-      <footer>
-        <Footer></Footer>
-      </footer>
+      <Header></Header>
 
       <Routes>
         <Route path='/' element={<Login />}></Route>
@@ -45,6 +40,10 @@ function App() {
 
 
       </Routes>
+
+
+      <Footer></Footer>
+
     </div>
 
   );

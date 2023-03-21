@@ -29,7 +29,7 @@ const Login = () => {
 
                     <div className="row">
                         <div className="col-12 | col-md-4 | col-sm-12">
-                            <label>Deez nuts</label>
+                            <label>Inicio Sesión</label>
                         </div>
                     </div>
 

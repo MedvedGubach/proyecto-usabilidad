@@ -5,33 +5,40 @@
 }
 
 .app-header {
-    background-color: #282c34;
-    min-height: 10vh;
+    /* min-height: 10vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
+    font-size: calc(10px + 2vmin); */
     color: white;
+    background-color: #282c34;
+
 }
 
 
 .app-footer {
-    position: absolute;
+    /* position: absolute;
     bottom: 0px;
     left: 0;
     width: 100%;
-    text-align: center;
+    text-align: center; */
     background-color: #282c34;
     color: white;
 }
 
 
 .app-content {
-    flex: 1;
+    /* flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding-bottom: 20%;
-    background-color: #2f3747;
+    background-color: #2f3747; */
+}
+
+.app-content-accordions {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }

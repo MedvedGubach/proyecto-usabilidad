@@ -1,19 +1,24 @@
 import React, { Fragment } from "react";
 
-const Header = () => {
+const Footer = () => {
     return (
         <Fragment>
-            <div className='container-fluid | pt-3 | container-footer'>
-                <div className='row |'>
-                    <div className='col-12 col-md-10 | offset-md-1 | app-footer |'>
-                        <p>Inicio</p>
-                        <p>Contacto</p>
-                        <p>Acerca de</p>
+            <footer class="bg-light py-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start">
+                            <p>&copy; 2023 My App</p>
+                        </div>
+                        <div class="col-md-6 text-center text-md-end">
+                            <a href="#">Privacy Policy</a>
+                            <span class="mx-2">|</span>
+                            <a href="#">Terms of Use</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </footer>
         </Fragment>
     );
 }
 
-export default Header;
+export default Footer;

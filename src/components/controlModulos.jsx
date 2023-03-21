@@ -12,8 +12,9 @@ import Paper from '@mui/material/Paper';
 import RegistrarCoordinador from "./registrarCoordinador";
 import RegistroExperto from "./registroExperto";
 import RegistrarDestinatario from "./registrarDestinatario";
-
-
+import ActualizarCoordinador from "./actualizarCoordinador";
+import ActualizarDestinatario from "./actualizarDestinatario";
+import ActualizarExperto from "./actualizarExperto";
 const ControlModulos = () => {
 
     const [valueRadios, setValueRadios] = useState('');
@@ -29,6 +30,12 @@ const ControlModulos = () => {
             setContenido(<RegistroExperto />);
         } else if (e.target.value === 'destinatario') {
             setContenido(<RegistrarDestinatario />);
+        } else if (e.target.value === 'actualizarCoordinador') {
+            setContenido(<ActualizarCoordinador />);
+        } else if (e.target.value === 'actualizarDestinatario') {
+            setContenido(<ActualizarDestinatario />);
+        } else if (e.target.value === 'actualizarExperto') {
+            setContenido(<ActualizarExperto />);
         }
     }
 
@@ -36,7 +43,7 @@ const ControlModulos = () => {
 
     return (
         <Fragment>
-            <div className="container | app-content">
+            <div className="container | app-content-accordions">
                 <div className="row">
                     <div className="col-12 | col-md-4 | col-sm-12">
                         <Accordion>
@@ -62,7 +69,7 @@ const ControlModulos = () => {
                             </AccordionDetails>
                         </Accordion>
 
-                        {/* <Accordion>
+                        <Accordion>
                             <AccordionSummary
                                 aria-controls="panel1a-content"
                                 id="panel1a-header"
@@ -82,7 +89,7 @@ const ControlModulos = () => {
                                     </RadioGroup>
                                 </FormControl>
                             </AccordionDetails>
-                        </Accordion> */}
+                        </Accordion>
                     </div>
 
 

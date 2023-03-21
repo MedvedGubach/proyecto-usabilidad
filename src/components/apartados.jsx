@@ -11,11 +11,11 @@ const Apartados = () => {
             <div className='container | app-content |'>
                 <div className='row | mb-5 |'>
                     <div className='col-12 col-md-4 | mb-5 |'>
-                        <Link>
+                        <Link to="Control-Modulo">
                             <Card className='rolCard |'>
                                 <CardImg className='img-cac-logos |'></CardImg>
                                 <CardBody>
-                                    <CardTitle className='card-text-cac |'>Apartado 1</CardTitle>
+                                    <CardTitle className='card-text-cac |'>Administración</CardTitle>
                                     <CardText></CardText>
                                 </CardBody>
                             </Card>
