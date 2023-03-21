@@ -8,7 +8,7 @@ import './css/styles.css';
 const Apartados = () => {
     return (
         <Fragment>
-            <div className='container | app-content'>
+            <div className='container | app-content |'>
                 <div className='row | mb-5 |'>
                     <div className='col-12 col-md-4 | mb-5 |'>
                         <Link>

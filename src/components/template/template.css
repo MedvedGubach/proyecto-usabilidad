@@ -1,10 +1,16 @@
+.App-main-div {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 .app-header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    background-color: #2f3747;
+    background-color: #282c34;
+    min-height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
     color: white;
 }
 
@@ -15,21 +21,17 @@
     left: 0;
     width: 100%;
     text-align: center;
-    background-color: #2f3747;
+    background-color: #282c34;
     color: white;
 }
 
 
 .app-content {
-    position: absolute;
-    top: 100px;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    color: white;
-
+    flex: 1;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 50vh;
+    justify-content: center;
+    padding-bottom: 20%;
+    background-color: #2f3747;
 }
