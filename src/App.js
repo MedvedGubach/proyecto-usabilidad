@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import Login from './components/login.jsx';
-import Header from './components/template/Header.jsx';
 import Footer from './components/template/Footer.jsx';
+import NavBar from './components/template/Navbar.jsx';
 import Inicio from './components/apartados.jsx';
 import ActualizarCoordinador from './components/actualizarCoordinador.jsx';
 import ActualizarDestinatario from './components/actualizarDestinatario.jsx';
@@ -23,10 +23,9 @@ function App() {
 
     <div className="App-main-div" >
 
-      <Header></Header>
-
+      <NavBar></NavBar>
       <Routes>
-        <Route path='/' element={<Login />}></Route>
+        <Route path='/' element={<ControlModulos />}></Route>
         <Route path='Inicio' element={<Inicio />}></Route>
         <Route path='Actualizar-Coordinador' element={<ActualizarCoordinador />}></Route>
         <Route path='Actualizar-Destinatario' element={<ActualizarDestinatario />}></Route>
@@ -37,8 +36,6 @@ function App() {
         <Route path='Registrar-Experto' element={<RegistrarExperto />}></Route>
         <Route path='Registrar-Destinatario' element={<RegistrarDestinatario />}></Route>
         <Route path='Restablecer-Contraseña' element={<RestablecerContraseña />}></Route>
-
-
       </Routes>
 
 

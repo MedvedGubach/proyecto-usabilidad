@@ -96,7 +96,7 @@ const ControlModulos = () => {
                 </div>
             </div>
 
-            <div className="container | app-content">
+            <div className="container | ">
                 <Paper elevation={4}>
                     <div className="row">
                         <div className="col-12 | col-md-12 | col-sm-12">

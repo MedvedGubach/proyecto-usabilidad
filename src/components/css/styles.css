@@ -1,39 +1,39 @@
-.img-cac-logos{
+.img-apartados{
     margin: auto;
     display: block;
     padding: 5%;
     width: 50%;
 }
 
-.rolCard{
+.apartado-1{
     cursor: pointer;
     background: linear-gradient(to bottom, #f9d2d2, #ffaba8, #ff8279, #ff5546, #ff0202);
 }
-.rolCard:active{
+.apartado-1:active{
     transform: scale(0.99);
 }
 
-.planesCard{
+.apartado-2{
     cursor: pointer;
     background:linear-gradient(to bottom, #f9f9d7, #fbfbb1, #fdfd8a, #fefe5c, #ffff04);
 }
-.planesCard:active{
+.apartado-2:active{
     transform: scale(0.99);
 }
 
-.ciclosCard{
+.apartado-3{
     cursor: pointer;
     background: linear-gradient(to bottom, #cafbca, #aafea8, #88ff83, #5fff57, #00ff00);
 }
-.ciclosCard:active{
+.apartado-3:active{
     transform: scale(0.99);
 }
 
-.plantelesCard{
+.apartado-4{
     cursor: pointer;
     background: linear-gradient(to bottom, #eff4f9, #b9d1ec, #87addf, #5589d2, #1266c2);
 }
-.plantelesCard:active{
+.apartado-4:active{
     transform: scale(0.99);
 }
 
