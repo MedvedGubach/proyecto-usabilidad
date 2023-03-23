@@ -14,7 +14,7 @@ const Navbar = () => {
                         <nav className='navbar navbar-expand-lg navbar-light | nav_style |'>
                             <div className='collapse navbar-collapse |' id='navbarNavAltMarkup'>
                                 <div className='navbar-nav |'>
-                                    <Link className='nav-link |' to='/'>Inicio</Link>
+                                    <Link className='nav-link |' to='/Inicio'>Inicio</Link>
                                     <Link className='nav-link |' to='/'>------------</Link>
                                     <Link className='nav-link |' to='/'>-------------</Link>
                                     <Link className='nav-link |' to='/'>-------------</Link>

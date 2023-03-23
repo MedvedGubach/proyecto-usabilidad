@@ -5,17 +5,22 @@ import Button from '@mui/material/Button';
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 const Login = () => {
-
+    const navigate = useNavigate();
     const [codigo, setCodigo] = useState('');
     const [nip, setNip] = useState('');
 
-    const authUsuario = () => {
+    const authUsuario = (e) => {
+        e.preventDefault();
         if (codigo === '' || nip === '') {
             toast.warning('Todos los campos son obligatorios', { theme: "dark", position: "top-center", toastId: 'warning1' });
-        } else if (codigo == '12345' && nip == '12345') {
-            <Link to="Inicio"></Link>
+        } else if (codigo === 'admin' && nip === '12345') {
+            navigate("Inicio");
+        }else{
+            toast.warning('Código o Contraseña Incorrectos', { theme: "dark", position: "top-center", toastId: 'warning2' });
         }
     }
 
@@ -43,7 +48,7 @@ const Login = () => {
                     </div>
                     <div className="row | ">
                         <div className="col-12 | col-md-4 | col-sm-12 |">
-                            <Link to="Inicio"><Button onClick={authUsuario} variant="contained">Iniciar Sesión</Button></Link>
+                            <Button onClick={authUsuario} variant="contained">Iniciar Sesión</Button>
                         </div>
                     </div>
                 </Paper>

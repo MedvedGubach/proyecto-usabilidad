@@ -25,17 +25,18 @@ function App() {
 
       <NavBar></NavBar>
       <Routes>
-        <Route path='/' element={<ControlModulos />}></Route>
-        <Route path='Inicio' element={<Inicio />}></Route>
-        <Route path='Actualizar-Coordinador' element={<ActualizarCoordinador />}></Route>
-        <Route path='Actualizar-Destinatario' element={<ActualizarDestinatario />}></Route>
-        <Route path='Actualizar-Experto' element={<ActualizarExperto />}></Route>
-        <Route path='Control-Modulo' element={<ControlModulos />}></Route>
-        <Route path='Sesion-Coordinador' element={<IniciarSesionCoord />}></Route>
-        <Route path='Registrar-Coordinador' element={<RegistrarCoordinador />}></Route>
-        <Route path='Registrar-Experto' element={<RegistrarExperto />}></Route>
-        <Route path='Registrar-Destinatario' element={<RegistrarDestinatario />}></Route>
-        <Route path='Restablecer-Contraseña' element={<RestablecerContraseña />}></Route>
+        <Route path='/' element={<Login />}></Route>
+        <Route path='/Inicio' element={<Inicio />}></Route>
+        <Route path='/Actualizar-Coordinador' element={<ActualizarCoordinador />}></Route>
+        <Route path='/Actualizar-Destinatario' element={<ActualizarDestinatario />}></Route>
+        <Route path='/Actualizar-Experto' element={<ActualizarExperto />}></Route>
+        <Route path='/Control-Modulo' element={<ControlModulos />}></Route>
+        <Route path='/Sesion-Coordinador' element={<IniciarSesionCoord />}></Route>
+        <Route path='/Registrar-Coordinador' element={<RegistrarCoordinador />}></Route>
+        <Route path='/Registrar-Experto' element={<RegistrarExperto />}></Route>
+        <Route path='/Registrar-Destinatario' element={<RegistrarDestinatario />}></Route>
+        <Route path='/Restablecer-Contraseña' element={<RestablecerContraseña />}></Route>
+        <Route path="*" element={<p>Ruta No Encontrada</p>} />
       </Routes>
 
 

@@ -8,10 +8,10 @@ import './css/styles.css';
 const Apartados = () => {
     return (
         <Fragment>
-            <div className='container | app-content |'>
-                <div className='row | mb-5 |'>
-                    <div className='col-12 col-md-4 | mb-5 |'>
-                        <Link to="Control-Modulo">
+            <div className='container |'>
+                <div className='row |'>
+                    <div className='col-12 col-md-4 |'>
+                        <Link to="/Control-Modulo">
                             <Card className='apartado-1 |'>
                                 <CardImg className='img-apartados |'>{/* <AdminPanelSettingsIcon/> */}</CardImg>
                                 <CardBody>

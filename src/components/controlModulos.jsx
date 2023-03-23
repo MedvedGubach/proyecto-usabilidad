@@ -44,6 +44,7 @@ const ControlModulos = () => {
     return (
         <Fragment>
             <div className="container | app-content-accordions">
+                <Paper elevation={8}>
                 <div className="row">
                     <div className="col-12 | col-md-4 | col-sm-12">
                         <Accordion>
@@ -92,19 +93,11 @@ const ControlModulos = () => {
                         </Accordion>
                     </div>
 
-
-                </div>
-            </div>
-
-            <div className="container | ">
-                <Paper elevation={4}>
-                    <div className="row">
-                        <div className="col-12 | col-md-12 | col-sm-12">
+                    <div className="col-12 | col-md-8 | col-sm-12">
                             {contenido}
                         </div>
-                    </div>
+                </div>
                 </Paper>
-
             </div>
         </Fragment>
     );
