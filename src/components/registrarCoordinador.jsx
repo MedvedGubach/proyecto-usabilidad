@@ -26,32 +26,32 @@ const RegistrarCoordinador = () => {
         <Fragment>
             <ToastContainer></ToastContainer>
             <div className="container">
-                <div className="row">
+                <div className="row pb-4 | pt-4">
                     <div className="col-12 | col-md-6 | col-sm-12">
-                        <TextField onChange={(e) => { setNombre(e.target.value); console.log(e.target.value) }} id="outlined-basic" label="Nombre" variant="outlined" />
+                        <TextField fullWidth onChange={(e) => { setNombre(e.target.value); console.log(e.target.value) }} id="outlined-basic" label="Nombre" variant="outlined" />
                     </div>
                 </div>
-                <div className="row">
+                <div className="row pb-4">
                     <div className="col-12 | col-md-6 | col-sm-12">
-                        <TextField onChange={(e) => { setEmail(e.target.value); console.log(e.target.value) }} id="outlined-basic" label="E-Mail" variant="outlined" />
+                        <TextField fullWidth onChange={(e) => { setEmail(e.target.value); console.log(e.target.value) }} id="outlined-basic" label="E-Mail" variant="outlined" />
                     </div>
                 </div>
-                <div className="row">
+                <div className="row pb-4">
                     <div className="col-12 | col-md-6 | col-sm-12">
-                        <TextField onChange={(e) => { setArea(e.target.value); console.log(e.target.value) }} id="outlined-basic" label="Área" variant="outlined" />
+                        <TextField fullWidth onChange={(e) => { setArea(e.target.value); console.log(e.target.value) }} id="outlined-basic" label="Área" variant="outlined" />
                     </div>
                 </div>
-                <div className="row">
+                <div className="row pb-4">
                     <div className="col-12 | col-md-6 | col-sm-12">
-                        <TextField onChange={(e) => { setCodigo(e.target.value); console.log(e.target.value) }} id="outlined-basic" label="Código" variant="outlined" />
+                        <TextField fullWidth onChange={(e) => { setCodigo(e.target.value); console.log(e.target.value) }} id="outlined-basic" label="Código" variant="outlined" />
                     </div>
                 </div>
-                <div className="row">
+                <div className="row pb-4">
                     <div className="col-12 | col-md-6 | col-sm-12">
-                        <TextField onChange={(e) => { setNip(e.target.value); console.log(e.target.value) }} id="outlined-basic" label="NIP" variant="outlined" />
+                        <TextField fullWidth onChange={(e) => { setNip(e.target.value); console.log(e.target.value) }} id="outlined-basic" label="NIP" variant="outlined" />
                     </div>
                 </div>
-                <div className="row">
+                <div className="row pb-4">
                     <div className="col-12 | col-md-6 | col-sm-12">
                         <Button onClick={registrarCoordinador} variant="contained">Registrar Coordinador</Button>
                     </div>

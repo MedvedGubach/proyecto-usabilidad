@@ -17,13 +17,14 @@ import RestablecerContraseña from './components/restablecerContraseña.jsx'
 
 
 import { Routes, Route } from "react-router-dom"
+import { Fragment } from 'react';
 
 function App() {
   return (
 
-    <div className="App-main-div" >
-
+    <Fragment>
       <NavBar></NavBar>
+
       <Routes>
         <Route path='/' element={<Login />}></Route>
         <Route path='/Inicio' element={<Inicio />}></Route>
@@ -39,10 +40,8 @@ function App() {
         <Route path="*" element={<p>Ruta No Encontrada</p>} />
       </Routes>
 
-
       <Footer></Footer>
-
-    </div>
+    </Fragment>
 
   );
 }

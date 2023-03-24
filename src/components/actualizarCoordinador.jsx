@@ -25,7 +25,7 @@ const ActualizarCoordinador = () => {
         if (nuevaArea === '' || nuevoCodigo === '' || nuevoNip === '') {
             toast.warning('Todos los campos son obligatorios', { theme: "dark", position: "top-center", toastId: 'warning1' });
         } else {
-            
+
         }
     }
 
@@ -48,22 +48,22 @@ const ActualizarCoordinador = () => {
                 </div>
                 <div className="row">
                     <div className="col-12 | col-md-6 | col-sm-12">
-                        <TextField onChange={(e) => { setNuevaArea(e.target.value); console.log(e.target.value) }} id="outlined-basic" label="Nueva Área" variant="outlined" />
+                        <TextField fullWidth onChange={(e) => { setNuevaArea(e.target.value); console.log(e.target.value) }} id="outlined-basic" label="Nueva Área" variant="outlined" />
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-12 | col-md-6 | col-sm-12">
-                        <TextField onChange={(e) => { setNuevoCodigo(e.target.value); console.log(e.target.value) }} id="outlined-basic" label="Nuevo Código" variant="outlined" />
+                        <TextField fullWidth onChange={(e) => { setNuevoCodigo(e.target.value); console.log(e.target.value) }} id="outlined-basic" label="Nuevo Código" variant="outlined" />
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-12 | col-md-6 | col-sm-12">
-                        <TextField onChange={(e) => { setNuevoNip(e.target.value); console.log(e.target.value) }} id="outlined-basic" label="Nuevo NIP" variant="outlined" />
+                        <TextField fullWidth onChange={(e) => { setNuevoNip(e.target.value); console.log(e.target.value) }} id="outlined-basic" label="Nuevo NIP" variant="outlined" />
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-12 | col-md-6 | col-sm-12">
-                        <Button onClick={actualizarDatos} variant="contained">Actualizar Datos</Button>
+                        <Button fullWidth onClick={actualizarDatos} variant="contained">Actualizar Datos</Button>
                     </div>
                 </div>
             </div>

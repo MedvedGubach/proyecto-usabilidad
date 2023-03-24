@@ -23,7 +23,7 @@ const RegistroExperto = () => {
     return (
         <Fragment>
             <ToastContainer></ToastContainer>
-            <div className="container">
+            <div className="container-fluid">
                 <div className="row">
                     <div className="col-12 | col-md-6 | col-sm-12">
                         <TextField onChange={(e) => { setNombre(e.target.value); console.log(e.target.value) }} id="outlined-basic" label="Nombre" variant="outlined" />

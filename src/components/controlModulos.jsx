@@ -19,6 +19,8 @@ const ControlModulos = () => {
 
     const [valueRadios, setValueRadios] = useState('');
     const [contenido, setContenido] = useState('');
+    const [expandedRegistro, setExpandedRegistro] = useState(false);
+    const [expandedActualizar, setExpandedActualizar] = useState(false);
 
     const handleRadios = (e) => {
         setValueRadios(e.target.value);
@@ -39,64 +41,62 @@ const ControlModulos = () => {
         }
     }
 
-
-
     return (
         <Fragment>
-            <div className="container | app-content-accordions">
+            <div className="container |">
                 <Paper elevation={8}>
-                <div className="row">
-                    <div className="col-12 | col-md-4 | col-sm-12">
-                        <Accordion>
-                            <AccordionSummary
-                                aria-controls="panel1a-content"
-                                id="panel1a-header"
-                            >
-                                <Typography>Registro Usuarios</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <FormControl>
-                                    <RadioGroup
-                                        aria-labelledby="demo-controlled-radio-buttons-group"
-                                        name="controlled-radio-buttons-group"
-                                        /* value={value} */
-                                        onChange={handleRadios}
-                                    >
-                                        <FormControlLabel value="coordinador" control={<Radio />} label="Coordinador" />
-                                        <FormControlLabel value="experto" control={<Radio />} label="Experto" />
-                                        <FormControlLabel value="destinatario" control={<Radio />} label="Destinatario" />
-                                    </RadioGroup>
-                                </FormControl>
-                            </AccordionDetails>
-                        </Accordion>
+                    <div className="row">
+                        <div className="col-12 | col-md-4 | col-sm-12">
+                            <Accordion expanded={expandedRegistro} onClick={() => {setExpandedRegistro(true); setExpandedActualizar(false);}}>
+                                <AccordionSummary
+                                    aria-controls="panel1a-content"
+                                    id="panel1a-header"
+                                >
+                                    <Typography>Registro Usuarios</Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <FormControl>
+                                        <RadioGroup
+                                            aria-labelledby="demo-controlled-radio-buttons-group"
+                                            name="controlled-radio-buttons-group"
+                                            /* value={value} */
+                                            onChange={handleRadios}
+                                        >
+                                            <FormControlLabel value="coordinador" control={<Radio />} label="Coordinador" />
+                                            <FormControlLabel value="experto" control={<Radio />} label="Experto" />
+                                            <FormControlLabel value="destinatario" control={<Radio />} label="Destinatario" />
+                                        </RadioGroup>
+                                    </FormControl>
+                                </AccordionDetails>
+                            </Accordion>
 
-                        <Accordion>
-                            <AccordionSummary
-                                aria-controls="panel1a-content"
-                                id="panel1a-header"
-                            >
-                                <Typography>Actualizar Datos</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <FormControl>
-                                    <RadioGroup
-                                        aria-labelledby="demo-controlled-radio-buttons-group"
-                                        name="controlled-radio-buttons-group"
-                                        onChange={handleRadios}
-                                    >
-                                        <FormControlLabel value="actualizarCoordinador" control={<Radio />} label="Actualizar Coordinador" />
-                                        <FormControlLabel value="actualizarDestinatario" control={<Radio />} label="Actualizar Experto" />
-                                        <FormControlLabel value="actualizarExperto" control={<Radio />} label="Actualizar Destinatario" />
-                                    </RadioGroup>
-                                </FormControl>
-                            </AccordionDetails>
-                        </Accordion>
-                    </div>
+                            <Accordion expanded={expandedActualizar} onClick={() => { setExpandedActualizar(true); setExpandedRegistro(false); }}>
+                                <AccordionSummary
+                                    aria-controls="panel1a-content"
+                                    id="panel1a-header"
+                                >
+                                    <Typography>Actualizar Datos</Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <FormControl>
+                                        <RadioGroup
+                                            aria-labelledby="demo-controlled-radio-buttons-group"
+                                            name="controlled-radio-buttons-group"
+                                            onChange={handleRadios}
+                                        >
+                                            <FormControlLabel value="actualizarCoordinador" control={<Radio />} label="Actualizar Coordinador" />
+                                            <FormControlLabel value="actualizarDestinatario" control={<Radio />} label="Actualizar Experto" />
+                                            <FormControlLabel value="actualizarExperto" control={<Radio />} label="Actualizar Destinatario" />
+                                        </RadioGroup>
+                                    </FormControl>
+                                </AccordionDetails>
+                            </Accordion>
+                        </div>
 
-                    <div className="col-12 | col-md-8 | col-sm-12">
+                        <div className="col-12 | col-md-8 | col-sm-12">
                             {contenido}
                         </div>
-                </div>
+                    </div>
                 </Paper>
             </div>
         </Fragment>
