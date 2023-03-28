@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const Login = () => {
@@ -19,7 +20,7 @@ const Login = () => {
             toast.warning('Todos los campos son obligatorios', { theme: "dark", position: "top-center", toastId: 'warning1' });
         } else if (codigo === 'admin' && nip === '12345') {
             navigate("Inicio");
-        }else{
+        } else {
             toast.warning('Código o Contraseña Incorrectos', { theme: "dark", position: "top-center", toastId: 'warning2' });
         }
     }
@@ -27,9 +28,8 @@ const Login = () => {
     return (
         <Fragment>
             <ToastContainer></ToastContainer>
-            <div className="container | app-content">
+            <div className="container |">
                 <Paper elevation={4}>
-
                     <div className="row">
                         <div className="col-12 | col-md-4 | col-sm-12">
                             <label>Inicio Sesión</label>

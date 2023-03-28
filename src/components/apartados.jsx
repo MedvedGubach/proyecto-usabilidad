@@ -22,22 +22,26 @@ const Apartados = () => {
                         </Link>
                     </div>
                     <div className='col-12 col-md-4 | mb-5 |'>
-                        <Card className='apartado-2 |'>
-                            <CardImg className='img-apartados |' ></CardImg>
-                            <CardBody>
-                                <CardTitle className='card-text-cac |'>Apartado 2</CardTitle>
-                                <CardText></CardText>
-                            </CardBody>
-                        </Card>
+                        <Link to="/Restablecer-Contraseña">
+                            <Card className='apartado-2 |'>
+                                <CardImg className='img-apartados |' ></CardImg>
+                                <CardBody>
+                                    <CardTitle className='card-text-cac |'>Usuarios</CardTitle>
+                                    <CardText></CardText>
+                                </CardBody>
+                            </Card>
+                        </Link>
                     </div>
                     <div className='col-12 col-md-4 |'>
-                        <Card className='apartado-3 |'>
-                            <CardImg className='img-apartados |' ></CardImg>
-                            <CardBody>
-                                <CardTitle className='card-text-cac |'>Apartado 3</CardTitle>
-                                <CardText></CardText>
-                            </CardBody>
-                        </Card>
+                        <Link to="/Tablero-Proyectos">
+                            <Card className='apartado-3 |'>
+                                <CardImg className='img-apartados |' ></CardImg>
+                                <CardBody>
+                                    <CardTitle className='card-text-cac |'>Tablero Proyectos</CardTitle>
+                                    <CardText></CardText>
+                                </CardBody>
+                            </Card>
+                        </Link>
                     </div>
                 </div>
 
@@ -46,7 +50,7 @@ const Apartados = () => {
                         <Card className='apartado-4 |' >
                             <CardImg className='img-apartados |'></CardImg>
                             <CardBody>
-                                <CardTitle className='card-text-cac |'>Apartado 4</CardTitle>
+                                <CardTitle className='card-text-cac |'>Perfiles Usuarios</CardTitle>
                                 <CardText></CardText>
                             </CardBody>
                         </Card>

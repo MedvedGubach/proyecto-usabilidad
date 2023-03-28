@@ -1,0 +1,14 @@
+.info-usuario-container{
+    text-align: right;
+}
+.span-nombre{
+    position: relative;
+    left: -5px;
+
+    font-size: 13px;
+}
+
+.span-cerrar-sesion{
+    color: #FF0000;
+    cursor: pointer;
+}
