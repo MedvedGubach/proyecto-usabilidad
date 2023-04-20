@@ -15,6 +15,7 @@ import RegistrarExperto from './components/registrarDestinatario.jsx';
 import RegistrarDestinatario from './components/registroExperto.jsx';
 import RestablecerContraseña from './components/restablecerContraseña.jsx'
 import TableroProyectos from './components/tableroProyectos';
+import PerfilUsuario from './components/perfilUsuaio';
 import { Routes, Route } from "react-router-dom"
 import { Fragment } from 'react';
 
@@ -37,6 +38,7 @@ function App() {
         <Route path='/Registrar-Destinatario' element={<RegistrarDestinatario />}></Route>
         <Route path='/Restablecer-Contraseña' element={<RestablecerContraseña />}></Route>
         <Route path='/Tablero-Proyectos' element={<TableroProyectos />}></Route>
+        <Route path='/Perfil-Usuario' element={<PerfilUsuario />}></Route>
         <Route path="*" element={<p>Ruta No Encontrada</p>} />
       </Routes>
 

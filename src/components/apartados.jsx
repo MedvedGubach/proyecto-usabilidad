@@ -47,13 +47,15 @@ const Apartados = () => {
 
                 <div className='row | mb-5 |'>
                     <div className='col-12 col-md-4 | mb-5 |'>
-                        <Card className='apartado-4 |' >
-                            <CardImg className='img-apartados |'></CardImg>
-                            <CardBody>
-                                <CardTitle className='card-text-cac |'>Perfiles Usuarios</CardTitle>
-                                <CardText></CardText>
-                            </CardBody>
-                        </Card>
+                        <Link to="/Perfil-Usuario">
+                            <Card className='apartado-4 |' >
+                                <CardImg className='img-apartados |'></CardImg>
+                                <CardBody>
+                                    <CardTitle className='card-text-cac |'>Perfiles Usuarios</CardTitle>
+                                    <CardText></CardText>
+                                </CardBody>
+                            </Card>
+                        </Link>
                     </div>
                     <div className='col-12 col-md-4 | mb-5 |'>
                         <Card>
