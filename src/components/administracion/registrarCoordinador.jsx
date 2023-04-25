@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import './css/styles.css'
+import '../css/styles.css'
 
 const RegistrarCoordinador = () => {
 
@@ -18,7 +18,7 @@ const RegistrarCoordinador = () => {
         if (nombre === '' || email === '' || area === '' || codigo === '' || nip === '') {
             toast.warning('Todos los campos son obligatorios', { theme: "dark", position: "top-center", toastId: 'warning1' });
         } else {
-            
+
         }
     }
 

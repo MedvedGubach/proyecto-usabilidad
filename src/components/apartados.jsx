@@ -11,7 +11,7 @@ const Apartados = () => {
             <div className='container |'>
                 <div className='row |'>
                     <div className='col-12 col-md-4 |'>
-                        <Link to="/Control-Modulo">
+                        <Link to="/Administracion-Menu">
                             <Card className='apartado-1 |'>
                                 <CardImg className='img-apartados |'>{/* <AdminPanelSettingsIcon/> */}</CardImg>
                                 <CardBody>
@@ -33,7 +33,7 @@ const Apartados = () => {
                         </Link>
                     </div>
                     <div className='col-12 col-md-4 |'>
-                        <Link to="/Tablero-Proyectos">
+                        <Link to="/Proyectos-Menu">
                             <Card className='apartado-3 |'>
                                 <CardImg className='img-apartados |' ></CardImg>
                                 <CardBody>
@@ -58,13 +58,15 @@ const Apartados = () => {
                         </Link>
                     </div>
                     <div className='col-12 col-md-4 | mb-5 |'>
-                        <Card>
-                            <CardImg className='img-apartados |' ></CardImg>
-                            <CardBody>
-                                <CardTitle className='card-text-cac |'>Apartado 5</CardTitle>
-                                <CardText></CardText>
-                            </CardBody>
-                        </Card>
+                        <Link to="/Login-Coord">
+                            <Card>
+                                <CardImg className='img-apartados |' ></CardImg>
+                                <CardBody>
+                                    <CardTitle className='card-text-cac |'>Login Coord Test</CardTitle>
+                                    <CardText></CardText>
+                                </CardBody>
+                            </Card>
+                        </Link>
                     </div>
                     <div className='col-12 col-md-4 |'>
                         <Card>

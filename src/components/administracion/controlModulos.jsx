@@ -9,6 +9,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Paper from '@mui/material/Paper';
+
 import RegistrarCoordinador from "./registrarCoordinador";
 import RegistroExperto from "./registroExperto";
 import RegistrarDestinatario from "./registrarDestinatario";
@@ -47,7 +48,7 @@ const ControlModulos = () => {
                 <Paper elevation={8}>
                     <div className="row">
                         <div className="col-12 | col-md-4 | col-sm-12">
-                            <Accordion expanded={expandedRegistro} onClick={() => {setExpandedRegistro(true); setExpandedActualizar(false);}}>
+                            <Accordion expanded={expandedRegistro} onClick={() => { setExpandedRegistro(true); setExpandedActualizar(false); }}>
                                 <AccordionSummary
                                     aria-controls="panel1a-content"
                                     id="panel1a-header"
@@ -85,8 +86,8 @@ const ControlModulos = () => {
                                             onChange={handleRadios}
                                         >
                                             <FormControlLabel value="actualizarCoordinador" control={<Radio />} label="Actualizar Coordinador" />
-                                            <FormControlLabel value="actualizarDestinatario" control={<Radio />} label="Actualizar Experto" />
-                                            <FormControlLabel value="actualizarExperto" control={<Radio />} label="Actualizar Destinatario" />
+                                            <FormControlLabel value="actualizarExperto" control={<Radio />} label="Actualizar Experto" />
+                                            <FormControlLabel value="actualizarDestinatario" control={<Radio />} label="Actualizar Destinatario" />
                                         </RadioGroup>
                                     </FormControl>
                                 </AccordionDetails>

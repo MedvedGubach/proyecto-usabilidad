@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 
-const RestablecerContraseña = () => {
+const ReporteUsabilidad = () => {
     return (
         <Fragment>
             <div className="container">
@@ -14,4 +14,4 @@ const RestablecerContraseña = () => {
     );
 }
 
-export default RestablecerContraseña; 
+export default ReporteUsabilidad; 
