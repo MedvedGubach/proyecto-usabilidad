@@ -11,7 +11,7 @@ import ControlModulos from './components/administracion/controlModulos.jsx';
 import IniciarSesionCoord from './components/iniciarSesionCoord.jsx';
 import RestablecerContraseña from './components/restablecerContraseña.jsx'
 import ProyectosMenu from './proyectos/proyectosMenu';
-import PerfilUsuario from './components/perfilUsuaio';
+import GestionGrupos from './components/gestion-grupos/gestionGrupos';
 import { Routes, Route } from "react-router-dom"
 import { Fragment } from 'react';
 
@@ -30,7 +30,7 @@ function App() {
         <Route path='/Proyectos-Menu' element={<ProyectosMenu />}></Route>
         <Route path='/Sesion-Coordinador' element={<IniciarSesionCoord />}></Route>
         <Route path='/Restablecer-Contraseña' element={<RestablecerContraseña />}></Route>
-        <Route path='/Perfil-Usuario' element={<PerfilUsuario />}></Route>
+        <Route path='/Gestion-Grupos' element={<GestionGrupos />}></Route>
         <Route path="*" element={<p>Ruta No Encontrada</p>} />
       </Routes>
 

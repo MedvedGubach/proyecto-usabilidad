@@ -47,11 +47,11 @@ const Apartados = () => {
 
                 <div className='row | mb-5 |'>
                     <div className='col-12 col-md-4 | mb-5 |'>
-                        <Link to="/Perfil-Usuario">
+                        <Link to="/Gestion-Grupos">
                             <Card className='apartado-4 |' >
                                 <CardImg className='img-apartados |'></CardImg>
                                 <CardBody>
-                                    <CardTitle className='card-text-cac |'>Perfiles Usuarios</CardTitle>
+                                    <CardTitle className='card-text-cac |'>Gestión de Grupos</CardTitle>
                                     <CardText></CardText>
                                 </CardBody>
                             </Card>

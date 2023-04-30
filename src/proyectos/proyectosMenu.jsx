@@ -4,9 +4,6 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
-import TableroProyectos from './tableroProyectos.jsx';
-import PesoCriterios from "./pesoCriterios.jsx";
-import PesoUsuarios from './pesoUsuarios.jsx';
 
 
 function TabPanel(props) {
@@ -64,13 +61,13 @@ const ProyectosMenu = () => {
                                 </Tabs>
                             </Box>
                             <TabPanel value={value} index={0}>
-                                <TableroProyectos></TableroProyectos>
+
                             </TabPanel>
                             <TabPanel value={value} index={1}>
-                                <PesoCriterios></PesoCriterios>
+
                             </TabPanel>
                             <TabPanel value={value} index={2}>
-                                <PesoUsuarios></PesoUsuarios>
+
                             </TabPanel>
                         </Box>
                     </div>

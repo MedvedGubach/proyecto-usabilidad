@@ -1,4 +1,4 @@
-import { Fragment, React, useState } from "react";
+import { Fragment, React, useState, useEffect } from "react";
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+const URL_PRUEBA = 'http://localhost/reactPhp/test.php';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -24,6 +24,21 @@ const Login = () => {
             toast.warning('Código o Contraseña Incorrectos', { theme: "dark", position: "top-center", toastId: 'warning2' });
         }
     }
+
+    const enviarDAta = async (url) => {
+        const res = await fetch('http://localhost/reactPhp/test.php', {
+            method: 'GET',
+            headers: new Headers({ 'Content-type': 'application/json' }),
+            mode: 'no-cors'
+        });
+        console.log(res)
+    }
+
+    useEffect(() => {
+        enviarDAta(URL_PRUEBA);
+        console.log('jala')
+    }, []);
+
 
     return (
         <Fragment>
