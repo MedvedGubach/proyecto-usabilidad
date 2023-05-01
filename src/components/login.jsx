@@ -6,8 +6,10 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-const URL_PRUEBA = 'http://localhost/reactPhp/test.php';
+const URL_PRUEBA = 'http://localhost/reactPhp/enquiry.php';
+
 
 const Login = () => {
     const navigate = useNavigate();
@@ -26,7 +28,7 @@ const Login = () => {
     }
 
     const enviarDAta = async (url) => {
-        const res = await fetch('http://localhost/reactPhp/test.php', {
+        const res = await fetch('http://localhost/reactPhp/enquiry.php', {
             method: 'GET',
             headers: new Headers({ 'Content-type': 'application/json' }),
             mode: 'no-cors'

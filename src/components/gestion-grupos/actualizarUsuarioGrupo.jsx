@@ -88,7 +88,7 @@ const EliminarUsuario = () => {
 
                 <div className="row">
                     <div className="col-12 | col-md-6 | col-sm-12">
-                        <Button onClick={actualizarGrupo} color="warning" variant="contained">Actualiar Grupo del Usuario</Button>
+                        <Button onClick={actualizarGrupo} color="primary" variant="contained">Actualiar Grupo del Usuario</Button>
                     </div>
                 </div>
             </div>

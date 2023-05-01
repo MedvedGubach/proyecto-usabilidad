@@ -13,6 +13,9 @@ import Paper from '@mui/material/Paper';
 import CrearGrupo from "./crearGrupo";
 import ActualizarGrupo from "./actualizarGrupo";
 import EliminarGrupo from "./eliminarGrupo";
+import AgregarUsuario from "./agregarUsuario";
+import EliminarUsuario from "./eliminarUsuario";
+import ActualizarUsuarioGrupo from "./actualizarUsuarioGrupo";
 
 const ControlModulos = () => {
     const [valueRadios, setValueRadios] = useState('');
@@ -31,11 +34,11 @@ const ControlModulos = () => {
         } else if (e.target.value === 'eliminargrupo') {
             setContenido(<EliminarGrupo></EliminarGrupo>);
         } else if (e.target.value === 'agregarusuariogrupo') {
-            setContenido();
+            setContenido(<AgregarUsuario></AgregarUsuario>);
         } else if (e.target.value === 'eliminarusuariodegrupo') {
-            setContenido();
+            setContenido(<EliminarUsuario></EliminarUsuario>);
         } else if (e.target.value === 'actualizarusuariogrupo') {
-            setContenido();
+            setContenido(<ActualizarUsuarioGrupo></ActualizarUsuarioGrupo>);
         } else if (e.target.value === 'eliminarregistro') {
             setContenido();
         }
