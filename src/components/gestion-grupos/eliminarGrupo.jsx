@@ -1,14 +1,15 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
+import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
 const EliminarGrupo = () => {
 
     const [valueGrupos, setValueUsuarios] = useState(null);
     const [inputvalueGrupos, setInputValueGrupos] = useState('');
-    const [usuariosArray, setUsuariosArray] = useState([]);
+    const [gruposArray, setGruposArray] = useState([]);
 
     const grupós = [
         { label: 'Grupo Test 1', id: 1994 },
@@ -19,6 +20,15 @@ const EliminarGrupo = () => {
         { label: "Grupo Test 6", id: 1993 },
         { label: 'Grupo Test 7', id: 1994 },
     ];
+
+    const getGrupoId = () => {
+        const url = 'http://localhost/backend-usabilidad-main/userServices/grupos/buscarPorId.php';
+        axios.get(url).then(response => { setGruposArray(response.data); alert(response.data) }).catch(error => alert(error));
+    }
+
+    useEffect(() => {
+        getGrupoId();
+    }, [])
 
     const [grupoEliminar, setGrupoEliminar] = useState('');
 
@@ -31,7 +41,13 @@ const EliminarGrupo = () => {
         if (inputvalueGrupos === '') {
             toast.warning('Todos los campos son obligatorios', { theme: "dark", position: "top-center", toastId: 'warning1' });
         } else {
-            toast.success('Grupo Actualizado Exitosamente', { theme: "dark", position: "top-center", toastId: 'warning1' });
+            const url = 'http://localhost/backend-usabilidad-main/userServices/grupos/eliminarGrupo.php';
+            let fData = new FormData();
+
+            fData.append('Id', grupoEliminar);
+
+            axios.post(url, fData).then(response => alert(response.data)).catch(error => alert(error));
+            toast.success('Grupo Eliminado Exitosamente', { theme: "dark", position: "top-center", toastId: 'warning1' });
         }
     }
 
@@ -40,7 +56,7 @@ const EliminarGrupo = () => {
             <ToastContainer></ToastContainer>
 
             <div className="container">
-                <div className="row | mb-4">
+                <div className="row | mb-4 | pt-4">
                     <div className="col-12 | col-md-6 | col-sm-12">
                         <Autocomplete
                             freeSolo
