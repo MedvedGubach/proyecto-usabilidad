@@ -1,4 +1,4 @@
-import { Fragment, React, useState } from "react";
+import { Fragment, React, useState, useEffect } from "react";
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -14,15 +14,21 @@ const RegistrarDestinatario = () => {
     const [inputValueUsuarios, setInputValueUsuarios] = useState('');
     const [usuariosArray, setUsuariosArray] = useState([]);
 
-    const usuarios = [
-        { label: 'Usuario 1', id: 1994 },
-        { label: 'Usuario 2', id: 1972 },
-        { label: 'Usuario 3', id: 1974 },
-        { label: 'Usuario 4', id: 2008 },
-        { label: 'Usuario 5', id: 1957 },
-        { label: "Usuario 6", id: 1993 },
-        { label: 'Usuario 7', id: 1994 },
-    ];
+    const getUsuarioId = () => {
+        axios.get('http://localhost/backend-usabilidad-main/userServices/usuarios/listarUsuarios.php').then(function (response) {
+            console.log(response.data);
+            const array = [];
+            for (let x = 0; x < response.data.length; x++) {
+                console.log(response.data[x].Id)
+                array.push({ label: response.data[x].Nombre + ' ' + response.data[x].Apellidos, value: response.data[x].Id });
+            }
+            setUsuariosArray(array);
+        });
+    }
+
+    useEffect(() => {
+        getUsuarioId();
+    }, [])
 
     const [idUsuario, setIdUsuario] = useState('');
 
@@ -32,14 +38,14 @@ const RegistrarDestinatario = () => {
         } else {
             const url = 'http://localhost/backend-usabilidad-main/userServices/usuarios/eliminarUsuario.php';
             let fData = new FormData();
-            fData.append('id', idUsuario);
+            fData.append('Id', idUsuario);
 
             axios.post(url, fData).then(response => alert(response.data)).catch(error => alert(error));
         }
     }
 
     const borrarUsuarioChagne = (v) => {
-        setIdUsuario(v.id);
+        setIdUsuario(v.value);
     }
 
     return (
@@ -55,7 +61,7 @@ const RegistrarDestinatario = () => {
                             onChange={(_, v) => borrarUsuarioChagne(v)}
                             inputValue={inputValueUsuarios}
                             onInputChange={(_, v) => setInputValueUsuarios(v)}
-                            options={usuarios}
+                            options={usuariosArray}
                             renderInput={(params) => <TextField {...params} label="Seleccione un Usuario" />}
                         />
                     </div>

@@ -1,55 +1,70 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Autocomplete from '@mui/material/Autocomplete';
+import axios from 'axios';
 import { ToastContainer, toast } from "react-toastify";
 
 const AgregarUsuario = () => {
 
-    const [valueGrupos, setValueGrupos] = useState(null);
+    const [valueGrupos, setValueUsuarios] = useState(null);
     const [inputvalueGrupos, setInputValueGrupos] = useState('');
-    const [usuariosArray, setUsuariosArray] = useState([]);
-
-    const grupos = [
-        { label: 'Grupo Test 1', id: 1994 },
-        { label: 'Grupo Test 2', id: 1972 },
-        { label: 'Grupo Test 3', id: 1974 },
-        { label: 'Grupo Test 4', id: 2008 },
-        { label: 'Grupo Test 5', id: 1957 },
-        { label: "Grupo Test 6", id: 1993 },
-        { label: 'Grupo Test 7', id: 1994 },
-    ];
-
-    const [valueUsuarios, setValueUsuarios] = useState(null);
-    const [inputvalueUsuarios, setInputvalueUsuarios] = useState('');
     const [gruposArray, setGruposArray] = useState([]);
 
-    const usuarios = [
-        { label: 'Usuario Test 1', id: 1 },
-        { label: 'Usuario Test 2', id: 2 },
-        { label: 'Usuario Test 3', id: 3 },
-        { label: 'Usuario Test 4', id: 4 },
-        { label: 'Usuario Test 5', id: 5 },
-        { label: "Usuario Test 6", id: 6 },
-        { label: 'Usuario Test 7', id: 7 },
-    ];
+    const [valueUsuario, setValueUsuario] = useState(null);
+    const [inputValueUsuarios, setInputValueUsuarios] = useState('');
+    const [usuariosArray, setUsuariosArray] = useState([]);
 
     const [grupoId, setGrupoId] = useState('');
     const [usuarioId, setUsuarioId] = useState('');
 
+    const getGrupoId = () => {
+        axios.get('http://localhost/backend-usabilidad-main/userServices/grupos/listarGrupos.php').then(function (response) {
+            console.log(response.data);
+            const array = [];
+            for (let x = 0; x < response.data.length; x++) {
+                array.push({ label: response.data[x].nombreGrupo, value: response.data[x].Id });
+            }
+            setGruposArray(array);
+        });
+    }
+
+    const getUsuarioId = () => {
+        axios.get('http://localhost/backend-usabilidad-main/userServices/usuarios/listarUsuarios.php').then(function (response) {
+            console.log(response.data);
+            const array = [];
+            for (let x = 0; x < response.data.length; x++) {
+                array.push({ label: response.data[x].Nombre + ' ' + response.data[x].Apellidos, value: response.data[x].Id });
+            }
+            setUsuariosArray(array);
+        });
+    }
+
+    useEffect(() => {
+        getGrupoId();
+        getUsuarioId();
+    }, [])
+
+
     const actualizarGrupoChange = (v) => {
-        setGrupoId(v.id);
+        setGrupoId(v.value);
     }
 
     const actualizarUsuarioChange = (v) => {
-        setUsuarioId(v.id);
+        setUsuarioId(v.value);
     }
 
     const actualizarGrupo = () => {
-        if (inputvalueGrupos === '' && inputvalueUsuarios === '') {
+        if (inputvalueGrupos === '' && inputValueUsuarios === '') {
             toast.warning('Todos los campos son obligatorios', { theme: "dark", position: "top-center", toastId: 'warning1' });
         } else {
-            toast.success('Usuario Agregado Correctamente', { theme: "dark", position: "top-center", toastId: 'warning1' });
+            const url = 'http://localhost/backend-usabilidad-main/userServices/grupo_usuarios/agregarGrupo_Usuario.php';
+            let fData = new FormData();
+            fData.append('IdGrupo', grupoId);
+            fData.append('IdUsuario', usuarioId);
+
+            axios.post(url, fData).then(response => alert(response.data)).catch(error => alert(error));
+            toast.success('Usuario Agregado Correctamente', { theme: "dark", position: "top-center", toastId: 'success' });
         }
     }
 
@@ -64,8 +79,8 @@ const AgregarUsuario = () => {
                             value={valueGrupos}
                             onChange={(_, v) => actualizarGrupoChange(v)}
                             inputValue={inputvalueGrupos}
-                            onInputChange={(_, v) => setInputvalueUsuarios(v)}
-                            options={grupos}
+                            onInputChange={(_, v) => setInputValueGrupos(v)}
+                            options={gruposArray}
                             renderInput={(params) => <TextField {...params} label="Seleccione Grupo" />}
                         />
                     </div>
@@ -75,12 +90,12 @@ const AgregarUsuario = () => {
                     <div className="col-12 | col-md-6 | col-sm-12">
                         <Autocomplete
                             freeSolo
-                            value={valueUsuarios}
+                            value={valueUsuario}
                             onChange={(_, v) => actualizarUsuarioChange(v)}
-                            inputValue={inputvalueUsuarios}
-                            onInputChange={(_, v) => setInputValueGrupos(v)}
-                            options={usuarios}
-                            renderInput={(params) => <TextField {...params} label="Seleccione Usuario" />}
+                            inputValue={inputValueUsuarios}
+                            onInputChange={(_, v) => setInputValueUsuarios(v)}
+                            options={usuariosArray}
+                            renderInput={(params) => <TextField {...params} label="Seleccione un Usuario" />}
                         />
                     </div>
                 </div>

@@ -87,9 +87,9 @@ const ControlModulos = () => {
                                             name="controlled-radio-buttons-group"
                                             onChange={handleRadios}
                                         >
-                                            <FormControlLabel value="agregarusuariogrupo" control={<Radio />} label="Actualizar Coordinador" />
-                                            <FormControlLabel value="actualizarusuariogrupo" control={<Radio />} label="Actualizar Experto" />
-                                            <FormControlLabel value="eliminarusuariodegrupo" control={<Radio />} label="Actualizar Destinatario" />
+                                            <FormControlLabel value="agregarusuariogrupo" control={<Radio />} label="Agregar Usuario a Grupo" />
+                                            <FormControlLabel value="actualizarusuariogrupo" control={<Radio />} label="Actualizar Grupo del Usuario" />
+                                            <FormControlLabel value="eliminarusuariodegrupo" control={<Radio />} label="Eliminar Usuario de Grupo" />
                                             <FormControlLabel value="eliminarregistro" control={<Radio />} label="Actualizar Destinatario" />
                                         </RadioGroup>
                                     </FormControl>

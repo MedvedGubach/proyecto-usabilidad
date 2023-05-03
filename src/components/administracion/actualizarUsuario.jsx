@@ -1,4 +1,4 @@
-import { Fragment, React, useState } from "react";
+import { Fragment, React, useState, useEffect } from "react";
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -13,22 +13,29 @@ const ActualizarUsuario = () => {
     const [inputValueUsuarios, setInputValueUsuarios] = useState('');
     const [usuariosArray, setUsuariosArray] = useState([]);
 
-    const usuarios = [
-        { label: 'Usuario 1', id: 1994 },
-        { label: 'Usuario 2', id: 1972 },
-        { label: 'Usuario 3', id: 1974 },
-        { label: 'Usuario 4', id: 2008 },
-        { label: 'Usuario 5', id: 1957 },
-        { label: "Usuario 6", id: 1993 },
-        { label: 'Usuario 7', id: 1994 },
-    ];
-
     const [idUsuario, setIdUsuario] = useState('');
     const [nombre, setNombre] = useState('');
     const [apellidos, setApellidos] = useState('');
     const [telefono, setTelefono] = useState('');
     const [email, setEmail] = useState('');
     const [rol, setRol] = useState('');
+
+    const getUsuarioId = () => {
+        axios.get('http://localhost/backend-usabilidad-main/userServices/usuarios/listarUsuarios.php').then(function (response) {
+            console.log(response.data);
+            const array = [];
+            for (let x = 0; x < response.data.length; x++) {
+              console.log(response.data[x].Id)
+                array.push({label: response.data[x].Nombre + ' ' + response.data[x].Apellidos, value: response.data[x].Id});
+            }
+           setUsuariosArray(array);
+        });
+    }
+
+    useEffect(() => {
+        getUsuarioId();
+    }, [])
+
 
     const actualizarUsuario = () => {
         if (inputValueUsuarios === '' || nombre === '' || apellidos === '' || telefono === '' || email === '' || rol === '') {
@@ -37,7 +44,7 @@ const ActualizarUsuario = () => {
             const url = 'http://localhost/backend-usabilidad-main/userServices/usuarios/actualizarUsuario.php';
             let fData = new FormData();
 
-            fData.append('id', idUsuario);
+            fData.append('Id', idUsuario);
             fData.append('nombre', nombre);
             fData.append('apellidos', apellidos);
             fData.append('telefono', telefono);
@@ -49,7 +56,7 @@ const ActualizarUsuario = () => {
     }
 
     const actualizarUsuarioChange = (v) => {
-        setIdUsuario(v.id);
+        setIdUsuario(v.value);
     }
 
     return (
@@ -64,7 +71,7 @@ const ActualizarUsuario = () => {
                             onChange={(_, v) => actualizarUsuarioChange(v)}
                             inputValue={inputValueUsuarios}
                             onInputChange={(_, v) => setInputValueUsuarios(v)}
-                            options={usuarios}
+                            options={usuariosArray}
                             renderInput={(params) => <TextField {...params} label="Seleccione un Usuario" />}
                         />
                     </div>

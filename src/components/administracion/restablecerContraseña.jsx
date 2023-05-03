@@ -1,4 +1,4 @@
-import { Fragment, React, useState } from "react";
+import { Fragment, React, useState, useEffect} from "react";
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -14,25 +14,30 @@ const RestablecerContraseña = () => {
     const [inputValueUsuarios, setInputValueUsuarios] = useState('');
     const [usuariosArray, setUsuariosArray] = useState([]);
 
-    const usuarios = [
-        { label: 'Usuario 1', id: 1994 },
-        { label: 'Usuario 2', id: 1972 },
-        { label: 'Usuario 3', id: 1974 },
-        { label: 'Usuario 4', id: 2008 },
-        { label: 'Usuario 5', id: 1957 },
-        { label: "Usuario 6", id: 1993 },
-        { label: 'Usuario 7', id: 1994 },
-    ];
-
     const [usuarioId, setUsuarioId] = useState('');
     const [nipActual, setNipActual] = useState('');
     const [nuevoNip, setNuevoNip] = useState('');
     const [confirmarNip, setConfirmarNip] = useState('');
 
-    const actualizarContraseña = (v) => {
-        setUsuarioId(v.id)
+    const getUsuarioId = () => {
+        axios.get('http://localhost/backend-usabilidad-main/userServices/usuarios/listarUsuarios.php').then(function (response) {
+            console.log(response.data);
+            const array = [];
+            for (let x = 0; x < response.data.length; x++) {
+                console.log(response.data[x].Id)
+                array.push({ label: response.data[x].Nombre + ' ' + response.data[x].Apellidos, value: response.data[x].Id });
+            }
+            setUsuariosArray(array);
+        });
     }
 
+    useEffect(() => {
+        getUsuarioId();
+    }, [])
+
+    const actualizarContraseña = (v) => {
+        setUsuarioId(v.value)
+    }
 
     const restablecer = () => {
         if (inputValueUsuarios === '' || nipActual === '' || nuevoNip === '' || confirmarNip === '') {
@@ -40,7 +45,7 @@ const RestablecerContraseña = () => {
         } else {
             const url = 'http://localhost/backend-usabilidad-main/userServices/usuarios/actualizarPassword.php';
             let fData = new FormData();
-            fData.append('id', usuarioId);
+            fData.append('Id', usuarioId);
             fData.append('passwordActual', nipActual);
             fData.append('newPassword', nuevoNip);
             fData.append('confirmarPassword', confirmarNip);
@@ -71,7 +76,7 @@ const RestablecerContraseña = () => {
                             onChange={(_, v) => actualizarContraseña(v)}
                             inputValue={inputValueUsuarios}
                             onInputChange={(_, v) => setInputValueUsuarios(v)}
-                            options={usuarios}
+                            options={usuariosArray}
                             renderInput={(params) => <TextField {...params} label="Seleccione un Usuario" />}
                         />
                     </div>

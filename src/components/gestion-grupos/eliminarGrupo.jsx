@@ -11,19 +11,16 @@ const EliminarGrupo = () => {
     const [inputvalueGrupos, setInputValueGrupos] = useState('');
     const [gruposArray, setGruposArray] = useState([]);
 
-    const grupós = [
-        { label: 'Grupo Test 1', id: 1994 },
-        { label: 'Grupo Test 2', id: 1972 },
-        { label: 'Grupo Test 3', id: 1974 },
-        { label: 'Grupo Test 4', id: 2008 },
-        { label: 'Grupo Test 5', id: 1957 },
-        { label: "Grupo Test 6", id: 1993 },
-        { label: 'Grupo Test 7', id: 1994 },
-    ];
 
     const getGrupoId = () => {
-        const url = 'http://localhost/backend-usabilidad-main/userServices/grupos/buscarPorId.php';
-        axios.get(url).then(response => { setGruposArray(response.data); alert(response.data) }).catch(error => alert(error));
+        axios.get('http://localhost/backend-usabilidad-main/userServices/grupos/listarGrupos.php').then(function (response) {
+            console.log(response.data);
+            const array = [];
+            for (let x = 0; x < response.data.length; x++) {
+                array.push({ label: response.data[x].nombreGrupo, value: response.data[x].Id });
+            }
+            setGruposArray(array);
+        });
     }
 
     useEffect(() => {
@@ -33,8 +30,8 @@ const EliminarGrupo = () => {
     const [grupoEliminar, setGrupoEliminar] = useState('');
 
     const eliminarGrupoChange = (v) => {
-        setGrupoEliminar(v.id);
-        console.log(v.id);
+        setGrupoEliminar(v.value);
+        console.log(v.value);
     }
 
     const eliminarGrupo = () => {
@@ -64,7 +61,7 @@ const EliminarGrupo = () => {
                             onChange={(_, v) => eliminarGrupoChange(v)}
                             inputValue={inputvalueGrupos}
                             onInputChange={(_, v) => setInputValueGrupos(v)}
-                            options={grupós}
+                            options={gruposArray}
                             renderInput={(params) => <TextField {...params} label="Seleccione Grupo" />}
                         />
                     </div>
