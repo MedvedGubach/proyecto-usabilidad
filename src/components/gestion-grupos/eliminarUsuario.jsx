@@ -47,17 +47,23 @@ const EliminarUsuario = () => {
     const [usuarioId, setUsuarioId] = useState('');
 
     const actualizarGrupoChange = (v) => {
-        setGrupoId(v.id);
+        setGrupoId(v.value);
     }
 
     const actualizarUsuarioChange = (v) => {
-        setUsuarioId(v.id);
+        setUsuarioId(v.value);
     }
 
     const actualizarGrupo = () => {
         if (inputvalueGrupos === '' && inputValueUsuarios === '') {
             toast.warning('Todos los campos son obligatorios', { theme: "dark", position: "top-center", toastId: 'warning1' });
         } else {
+            const url = 'http://localhost/backend-usabilidad-main/userServices/grupo_usuarios/eliminarUsuarioGrupo.php';
+            let fData = new FormData();
+            fData.append('IdUsuario', usuarioId);
+            fData.append('IdGrupo', grupoId);
+
+            axios.post(url, fData).then(response => alert(response.data)).catch(error => alert(error));
             toast.success('Usuario Eliminado Correctamente', { theme: "dark", position: "top-center", toastId: 'warning1' });
         }
     }

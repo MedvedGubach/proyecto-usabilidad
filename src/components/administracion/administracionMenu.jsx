@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
 
 import ControlModulos from "./controlModulos";
-import PermisosUsuario from "./permisosUsuario";
+import PermisosUsuario from "./rolesPermisosMenu";
 import ControlApartados from "./controlApartados";
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
