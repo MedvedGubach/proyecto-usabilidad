@@ -6,6 +6,9 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import './css/styles.css';
 
 const Apartados = () => {
+
+    const token = sessionStorage.getItem('token');
+    console.log(token);
     return (
         <Fragment>
             <div className='container |'>
