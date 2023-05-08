@@ -90,7 +90,6 @@ const ControlModulos = () => {
                                             <FormControlLabel value="agregarusuariogrupo" control={<Radio />} label="Agregar Usuario a Grupo" />
                                             <FormControlLabel value="actualizarusuariogrupo" control={<Radio />} label="Actualizar Grupo del Usuario" />
                                             <FormControlLabel value="eliminarusuariodegrupo" control={<Radio />} label="Eliminar Usuario de Grupo" />
-                                            <FormControlLabel value="eliminarregistro" control={<Radio />} label="Actualizar Destinatario" />
                                         </RadioGroup>
                                     </FormControl>
                                 </AccordionDetails>

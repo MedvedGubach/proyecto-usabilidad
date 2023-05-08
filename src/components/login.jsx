@@ -22,7 +22,7 @@ const Login = () => {
             const json = { email: email, password: nip }
             const login = JSON.stringify(json);
             console.log(JSON.stringify(json))
-            axios.post('http://localhost/backend-usabilidad-main/userServices/login.php', /* fData */login).then(function (response) {
+            axios.post('http://localhost/backend-usabilidad-main/userServices/login.php', login).then(function (response) {
                 console.log(response);
                 if (response.data.message === 'Successful login.') {
                     sessionStorage.setItem('token', response.data.jwt);

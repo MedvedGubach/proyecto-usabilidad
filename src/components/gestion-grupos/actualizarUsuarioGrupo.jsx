@@ -59,12 +59,21 @@ const EliminarUsuario = () => {
             toast.warning('Todos los campos son obligatorios', { theme: "dark", position: "top-center", toastId: 'warning1' });
         } else {
             const url = 'http://localhost/backend-usabilidad-main/userServices/grupo_usuarios/agregarGrupo_Usuario.php';
+            const url2 = 'http://localhost/backend-usabilidad-main/userServices/grupo_usuarios/eliminarGrupo_Usuario.php';
             let fData = new FormData();
+            let fDataBorrar = new FormData();
+
             fData.append('Id', usuarioId);
             fData.append('IdGrupo', grupoId);
             fData.append('IdUsuario', usuarioId);
+            fDataBorrar.append('Id', usuarioId);
 
-            axios.post(url, fData).then(response => alert(response.data)).catch(error => alert(error));
+            axios.post(url, fData).then(response => {
+                axios.post(url2, fDataBorrar).then(response => {
+                    alert(response.data);
+                })
+                alert(response.data)
+            }).catch(error => alert(error));
             toast.success('Grupo Actualizado Correctamente', { theme: "dark", position: "top-center", toastId: 'warning1' });
         }
     }
@@ -73,6 +82,13 @@ const EliminarUsuario = () => {
         <Fragment>
             <ToastContainer></ToastContainer>
             <div className="container">
+
+                <div className="row | mb-2 | mt-2">
+                    <div className="col-12 | col-md-4 | col-sm-12">
+                        <label>Actualizar Usuario de Grupo</label>
+                    </div>
+                </div>
+
                 <div className="row | mb-4">
                     <div className="col-12 | col-md-6 | col-sm-12">
                         <Autocomplete

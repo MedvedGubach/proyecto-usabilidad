@@ -72,6 +72,13 @@ const EliminarUsuario = () => {
         <Fragment>
             <ToastContainer></ToastContainer>
             <div className="container">
+
+                <div className="row | mb-2 | mt-2">
+                    <div className="col-12 | col-md-4 | col-sm-12">
+                        <label>Eliminar Usuario de Grupo</label>
+                    </div>
+                </div>
+
                 <div className="row | mb-4">
                     <div className="col-12 | col-md-6 | col-sm-12">
                         <Autocomplete
