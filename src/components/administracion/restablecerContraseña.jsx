@@ -1,9 +1,7 @@
-import { Fragment, React, useState, useEffect} from "react";
-import Paper from '@mui/material/Paper';
+import { Fragment, React, useState, useEffect } from "react";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import axios from 'axios'
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -60,11 +58,9 @@ const RestablecerContraseña = () => {
             <ToastContainer></ToastContainer>
             <div className="container">
 
-                <div className="row | mb-2">
-                    <div className="col-12 | col-md-6 | col-sm-12">
-                        <Typography variant="caption" display="block" gutterBottom>
-                            Restablecer Contraseña
-                        </Typography>
+                <div className="row | mb-2 | mt-2">
+                    <div className="col-12 | col-md-4 | col-sm-12">
+                        <label>Reestablecer Contraseña</label>
                     </div>
                 </div>
 

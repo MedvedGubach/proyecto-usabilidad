@@ -15,12 +15,16 @@ const ActualizarRolPermiso = () => {
     const [inputValueRolPermiso, setInputValueRolPermiso] = useState('');
     const [rolesPermisosArray, setRolesPermisosArray] = useState([]);
 
+    const [valueRolPermisoId, setValueRolPermisoId] = useState(null);
+    const [inputValueRolPermisoId, setInputValueRolPermisoId] = useState('');
+    const [rolesPermisosIdArray, setRolesPermisosIdArray] = useState([]);
+
+    const [rolPermisoId, setRolPermisoId] = useState('');
     const [rolId, setRolId] = useState('');
-    const [rolPermisoId, setRolPermiso] = useState('');
+    const [permisoId, setPermisoId] = useState('');
 
     const getRolId = () => {
         axios.get('http://localhost/backend-usabilidad-main/userServices/roles/listarRoles.php').then(function (response) {
-            console.log(response.data);
             const array = [];
             for (let x = 0; x < response.data.length; x++) {
                 array.push({ label: response.data[x].nombreRol, value: response.data[x].Id });
@@ -29,10 +33,8 @@ const ActualizarRolPermiso = () => {
         });
     }
 
-
     const getPermiso = () => {
         axios.get('http://localhost/backend-usabilidad-main/userServices/permisos/listarPermisos.php').then(function (response) {
-            console.log(response.data);
             const array = [];
             for (let x = 0; x < response.data.length; x++) {
                 array.push({ label: response.data[x].nombrePermiso, value: response.data[x].Id });
@@ -41,41 +43,43 @@ const ActualizarRolPermiso = () => {
         });
     }
 
+    const getRolPermisoId = () => {
+        axios.get('http://localhost/backend-usabilidad-main/userServices/rol_permiso/listarRoles_Permisos.php').then(function (response) {
+            const array = [];
+            for (let x = 0; x < response.data.length; x++) {
+                array.push({ label: response.data[x].Id, value: response.data[x].Id });
+            }
+            setRolesPermisosIdArray(array);
+        });
+    }
+
 
     useEffect(() => {
         getRolId();
         getPermiso();
+        getRolPermisoId();
     }, [])
 
+    const rolPermisoIdChange = (v) => {
+        setRolPermisoId(v.value);
+    }
 
     const rolChange = (v) => {
         setRolId(v.value);
-
-        let fData = new FormData();
-        fData.append('Id', v.value);
-
-        axios.post('http://localhost/backend-usabilidad-main/userServices/rol_permiso/getPermisos_Rol.php', fData).then(function (response) {
-            console.log('rolse permisos:', response.data);
-            /* const array = [];
-            for (let x = 0; x < response.data.length; x++) {
-                array.push({ label: response.data[x].nombreRol, value: response.data[x].Id });
-            }
-            setRolesArray(array); */
-        });
     }
 
     const rolPermisoChange = (v) => {
-        console.log(v)
-        setRolPermiso(v.value)
+        setPermisoId(v.value)
     }
 
-    const actualizarRolPermiso = (v) => {
-        if (inputValueRol === '' || inputValueRolPermiso === '') {
+    const actualizarRolPermiso = () => {
+        if (inputValueRolPermisoId == '' || inputValueRol === '' || inputValueRolPermiso === '') {
             toast.warning('Todos los Campos Son Obligatorios', { theme: "dark", position: "top-center", toastId: 'error1' });
         } else {
+
             let fData = new FormData();
             fData.append('Id', rolPermisoId);
-            fData.append('IdPermiso', rolPermisoId);
+            fData.append('IdPermiso', permisoId);
             fData.append('IdRol', rolId);
 
             axios.post('http://localhost/backend-usabilidad-main/userServices/rol_permiso/actualizarRol_Permiso.php', fData).then(function (response) {
@@ -97,12 +101,26 @@ const ActualizarRolPermiso = () => {
                     <div className="col-12 | col-md-6 | col-sm-12">
                         <Autocomplete
                             freeSolo
+                            value={valueRolPermisoId}
+                            onChange={(_, v) => rolPermisoIdChange(v)}
+                            inputValue={inputValueRolPermisoId}
+                            onInputChange={(_, v) => setInputValueRolPermisoId(v)}
+                            options={rolesPermisosIdArray}
+                            renderInput={(params) => <TextField {...params} label="Seleccione un Rol Permiso" />}
+                        />
+                    </div>
+                </div>
+
+                <div className="row | mb-4">
+                    <div className="col-12 | col-md-6 | col-sm-12">
+                        <Autocomplete
+                            freeSolo
                             value={valueRol}
                             onChange={(_, v) => rolChange(v)}
                             inputValue={inputValueRol}
                             onInputChange={(_, v) => setInputValueRol(v)}
                             options={rolesArray}
-                            renderInput={(params) => <TextField {...params} label="Seleccione un Rol" />}
+                            renderInput={(params) => <TextField {...params} label="Seleccione un Nuevo Rol" />}
                         />
                     </div>
                 </div>
@@ -116,7 +134,7 @@ const ActualizarRolPermiso = () => {
                             inputValue={inputValueRolPermiso}
                             onInputChange={(_, v) => setInputValueRolPermiso(v)}
                             options={rolesPermisosArray}
-                            renderInput={(params) => <TextField {...params} label="Seleccione un Permiso" />}
+                            renderInput={(params) => <TextField {...params} label="Seleccione un Nuevo Permiso" />}
                         />
                     </div>
                 </div>

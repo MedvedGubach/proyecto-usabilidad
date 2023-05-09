@@ -1,16 +1,36 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Button, Card, CardBody, CardImg, CardTitle, CardText, } from 'reactstrap';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import './css/styles.css';
 
 const Apartados = () => {
     const navigate = useNavigate();
     const token = sessionStorage.getItem('token');
+    const rol = sessionStorage.getItem('rol');
     console.log(token);
 
+    const authLogin = () => {
+        if (token == null) {
+            toast.warning('Error, Favor de Iniciar Sesión', { theme: "dark", position: "top-center", toastId: 'error1' });
+            navigate("/");
+        } else {
+            console.log('login')
+        }
+    }
+
+    useEffect(() => {
+        authLogin();
+    }, [])
+
+
     const authAdministrador = () => {
-        navigate("/Administracion-Menu");
+        if (rol == 'Administrador') {
+            navigate("/Administracion-Menu");
+        } else {
+            toast.warning('No Cuentas Con Acceso a Este Apartado', { theme: "dark", position: "top-center", toastId: 'error1' });
+        }
     }
 
     const authUsuarios = () => {
@@ -27,6 +47,7 @@ const Apartados = () => {
 
     return (
         <Fragment>
+            <ToastContainer></ToastContainer>
             <div className='container |'>
                 <div className='row |'>
                     <div className='col-12 col-md-4 |'>

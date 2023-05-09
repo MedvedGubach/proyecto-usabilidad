@@ -7,35 +7,21 @@ import axios from "axios";
 
 const EliminarRolPermiso = () => {
 
-    const [valueRol, setValueRol] = useState(null);
-    const [inputValueRol, setInputValueRol] = useState('');
-    const [rolesArray, setRolesArray] = useState([]);
 
     const [valueRolPermiso, setValueRolPermiso] = useState(null);
     const [inputValueRolPermiso, setInputValueRolPermiso] = useState('');
     const [rolesPermisosArray, setRolesPermisosArray] = useState([]);
 
-    const [rolId, setRolId] = useState('');
     const [rolPermisoId, setRolPermiso] = useState('');
 
-    const getRolId = () => {
-        axios.get('http://localhost/backend-usabilidad-main/userServices/roles/listarRoles.php').then(function (response) {
-            console.log(response.data);
-            const array = [];
-            for (let x = 0; x < response.data.length; x++) {
-                array.push({ label: response.data[x].nombreRol, value: response.data[x].Id });
-            }
-            setRolesArray(array);
-        });
-    }
 
 
-    const getPermiso = () => {
-        axios.get('http://localhost/backend-usabilidad-main/userServices/permisos/listarPermisos.php').then(function (response) {
-            console.log(response.data);
+
+    const getRolPermisoId = () => {
+        axios.get('http://localhost/backend-usabilidad-main/userServices/rol_permiso/listarRoles_Permisos.php').then(function (response) {
             const array = [];
             for (let x = 0; x < response.data.length; x++) {
-                array.push({ label: response.data[x].nombrePermiso, value: response.data[x].Id });
+                array.push({ label: response.data[x].Id, value: response.data[x].Id });
             }
             setRolesPermisosArray(array);
         });
@@ -43,34 +29,17 @@ const EliminarRolPermiso = () => {
 
 
     useEffect(() => {
-        getRolId();
-        getPermiso();
+        getRolPermisoId();
     }, [])
 
-
-    const rolChange = (v) => {
-        setRolId(v.value);
-
-        let fData = new FormData();
-        fData.append('Id', v.value);
-
-        axios.post('http://localhost/backend-usabilidad-main/userServices/rol_permiso/getPermisos_Rol.php', fData).then(function (response) {
-            console.log('rolse permisos:', response.data);
-            /* const array = [];
-            for (let x = 0; x < response.data.length; x++) {
-                array.push({ label: response.data[x].nombreRol, value: response.data[x].Id });
-            }
-            setRolesArray(array); */
-        });
-    }
 
     const rolPermisoChange = (v) => {
         console.log(v)
         setRolPermiso(v.value)
     }
 
-    const eliminarRolPermiso = (v) => {
-        if (inputValueRol === '' || inputValueRolPermiso === '') {
+    const eliminarRolPermiso = () => {
+        if (inputValueRolPermiso === '') {
             toast.warning('Todos los Campos Son Obligatorios', { theme: "dark", position: "top-center", toastId: 'error1' });
         } else {
             let fData = new FormData();
@@ -78,6 +47,7 @@ const EliminarRolPermiso = () => {
 
             axios.post('http://localhost/backend-usabilidad-main/userServices/rol_permiso/eliminarRol_Permiso.php', fData).then(function (response) {
                 alert(response.data);
+                getRolPermisoId();
             });
         }
     }
@@ -89,20 +59,6 @@ const EliminarRolPermiso = () => {
                 <div className="row | mb-2 | mt-2">
                     <div className="col-12 | col-md-4 | col-sm-12">
                         <label>Eliminar Rol Permiso</label>
-                    </div>
-                </div>
-
-                <div className="row | mb-4">
-                    <div className="col-12 | col-md-6 | col-sm-12">
-                        <Autocomplete
-                            freeSolo
-                            value={valueRol}
-                            onChange={(_, v) => rolChange(v)}
-                            inputValue={inputValueRol}
-                            onInputChange={(_, v) => setInputValueRol(v)}
-                            options={rolesArray}
-                            renderInput={(params) => <TextField {...params} label="Seleccione un Rol" />}
-                        />
                     </div>
                 </div>
 

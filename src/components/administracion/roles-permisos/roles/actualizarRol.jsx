@@ -13,7 +13,6 @@ const ActualizarRol = () => {
     const [inputValueRoles, setInputValueRoles] = useState('');
     const [rolesArray, setRolesArray] = useState([]);
 
-
     const [rolId, setRolId] = useState('');
     const [nombreRol, setNombreRol] = useState('');
 

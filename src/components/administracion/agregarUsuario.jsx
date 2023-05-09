@@ -1,13 +1,17 @@
-import { Fragment, React, useState } from "react";
-import Paper from '@mui/material/Paper';
+import { Fragment, React, useState, useEffect } from "react";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Autocomplete from '@mui/material/Autocomplete';
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import '../css/styles.css'
 
 const RegistrarCoordinador = () => {
+
+    const [valueRoles, setValueRoles] = useState(null);
+    const [inputValueRoles, setInputValueRoles] = useState('');
+    const [rolesArray, setRolesArray] = useState([]);
 
     const [nombre, setNombre] = useState('');
     const [apellidos, setApellidos] = useState('');
@@ -16,6 +20,26 @@ const RegistrarCoordinador = () => {
     const [rol, setRol] = useState('');
     const [nip, setNip] = useState('');
     const [confNip, setConfNip] = useState('');
+
+    const getRolId = () => {
+        axios.get('http://localhost/backend-usabilidad-main/userServices/roles/listarRoles.php').then(function (response) {
+            console.log(response.data);
+            const array = [];
+            for (let x = 0; x < response.data.length; x++) {
+                array.push({ label: response.data[x].nombreRol, value: response.data[x].Id });
+            }
+            setRolesArray(array);
+        });
+    }
+
+    useEffect(() => {
+        getRolId();
+    }, [])
+
+    const rolChange = (v) => {
+        console.log(v);
+        setRol(v.label);
+    }
 
 
     const registrarCoordinador = () => {
@@ -40,6 +64,13 @@ const RegistrarCoordinador = () => {
         <Fragment>
             <ToastContainer></ToastContainer>
             <div className="container">
+
+                <div className="row | mb-2 | mt-2">
+                    <div className="col-12 | col-md-4 | col-sm-12">
+                        <label>Agregar Usuario</label>
+                    </div>
+                </div>
+
                 <div className="row pb-4 | pt-4">
                     <div className="col-12 | col-md-6 | col-sm-12">
                         <TextField fullWidth onChange={(e) => { setNombre(e.target.value); console.log(e.target.value) }} id="outlined-basic" label="Nombre" variant="outlined" />
@@ -62,7 +93,15 @@ const RegistrarCoordinador = () => {
                 </div>
                 <div className="row pb-4">
                     <div className="col-12 | col-md-6 | col-sm-12">
-                        <TextField fullWidth onChange={(e) => { setRol(e.target.value); console.log(e.target.value) }} id="outlined-basic" label="Rol" variant="outlined" />
+                        <Autocomplete
+                            freeSolo
+                            value={valueRoles}
+                            onChange={(_, v) => rolChange(v)}
+                            inputValue={inputValueRoles}
+                            onInputChange={(_, v) => setInputValueRoles(v)}
+                            options={rolesArray}
+                            renderInput={(params) => <TextField {...params} label="Seleccione Rol" />}
+                        />
                     </div>
                 </div>
                 <div className="row pb-4">

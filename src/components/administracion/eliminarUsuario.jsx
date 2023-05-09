@@ -1,5 +1,4 @@
 import { Fragment, React, useState, useEffect } from "react";
-import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -51,7 +50,13 @@ const RegistrarDestinatario = () => {
     return (
         <Fragment>
             <ToastContainer></ToastContainer>
-            <div className="container-fluid">
+            <div className="container">
+
+                <div className="row | mb-2 | mt-2">
+                    <div className="col-12 | col-md-4 | col-sm-12">
+                        <label>Eliminar Usuario</label>
+                    </div>
+                </div>
 
                 <div className="row | mb-4">
                     <div className="col-12 | col-md-8 | col-sm-12">
@@ -66,7 +71,6 @@ const RegistrarDestinatario = () => {
                         />
                     </div>
                 </div>
-
 
                 <div className="row">
                     <div className="col-12 | col-md-6 | col-sm-12">
