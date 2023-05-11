@@ -5,6 +5,9 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
 
+import MenuUsuarios from './usuariosProyectos/usuariosProyectosMenu';
+import RegistrarProyecto from './registrarProyecto.jsx';
+import TableroProyectos from './tableroProyectos.jsx'
 
 function TabPanel(props) {
 
@@ -56,15 +59,15 @@ const ProyectosMenu = () => {
                             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                                     <Tab label="Registrar Datos Proyecto" {...a11yProps(0)} />
-                                    <Tab label="Asignar Peso Criterios" {...a11yProps(1)} />
+                                    <Tab label="Usuarios Proyectos" {...a11yProps(1)} />
                                     <Tab label="Asignar Peso Tipos de Usuarios" {...a11yProps(2)} />
                                 </Tabs>
                             </Box>
                             <TabPanel value={value} index={0}>
-
+                                <RegistrarProyecto></RegistrarProyecto>
                             </TabPanel>
                             <TabPanel value={value} index={1}>
-
+                                <MenuUsuarios></MenuUsuarios>
                             </TabPanel>
                             <TabPanel value={value} index={2}>
 
