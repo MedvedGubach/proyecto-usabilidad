@@ -70,7 +70,7 @@ const RegistrarProyecto = () => {
                             inputValue={inputValueUsuarios}
                             onInputChange={(_, v) => setInputValueUsuarios(v)}
                             options={usuariosArray}
-                            renderInput={(params) => <TextField {...params} label="Seleccione un Usuario" />}
+                            renderInput={(params) => <TextField {...params} label="Dueño del Proyecto" />}
                         />
                     </div>
                 </div>
@@ -82,7 +82,7 @@ const RegistrarProyecto = () => {
 
                 <div className="row pb-4">
                     <div className="col-12 | col-md-6 | col-sm-12">
-                        <Button onClick={registrarProyecto} variant="contained">Actualizar Usuario</Button>
+                        <Button onClick={registrarProyecto} variant="contained">Registrar Proyecto</Button>
                     </div>
                 </div>
             </div>

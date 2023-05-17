@@ -7,6 +7,7 @@ import Footer from './components/template/Footer.jsx';
 import NavBar from './components/template/Navbar.jsx';
 import Inicio from './components/apartados.jsx';
 import AdministracionMenu from './components/administracion/administracionMenu';
+import PerfilesUsuarios from './components/usuarios/perfilesUsuarios.jsx';
 import ControlModulos from './components/administracion/controlModulos.jsx';
 import IniciarSesionCoord from './components/iniciarSesionCoord.jsx';
 import ProyectosMenu from './proyectos/proyectosMenu';
@@ -26,6 +27,7 @@ function App() {
         <Route path='/Inicio' element={<Inicio />}></Route>
         <Route path='/Administracion-Menu' element={<AdministracionMenu />}></Route>
         <Route path='/Control-Modulo' element={<ControlModulos />}></Route>
+        <Route path='/Usuarios' element={<PerfilesUsuarios />}></Route>
         <Route path='/Proyectos-Menu' element={<ProyectosMenu />}></Route>
         <Route path='/Sesion-Coordinador' element={<IniciarSesionCoord />}></Route>
         <Route path='/Gestion-Grupos' element={<GestionGrupos />}></Route>

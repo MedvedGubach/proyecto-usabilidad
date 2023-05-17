@@ -26,15 +26,16 @@ const Apartados = () => {
 
 
     const authAdministrador = () => {
-        if (rol == 'Administrador') {
+        navigate("/Administracion-Menu");
+        /* if (rol == 'Administrador') {
             navigate("/Administracion-Menu");
         } else {
             toast.warning('No Cuentas Con Acceso a Este Apartado', { theme: "dark", position: "top-center", toastId: 'error1' });
-        }
+        } */
     }
 
     const authUsuarios = () => {
-        navigate("/Restablecer-Contraseña");
+        navigate("/Usuarios");
     }
 
     const authTableroProyectos = () => {

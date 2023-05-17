@@ -58,7 +58,6 @@ const AdministracionMenu = () => {
                                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                                     <Tab label="Control Usuarios" {...a11yProps(0)} />
                                     <Tab label="Permisos Usuario" {...a11yProps(1)} />
-                                    <Tab label="Control Modulos" {...a11yProps(2)} />
                                 </Tabs>
                             </Box>
                             <TabPanel value={value} index={0}>
@@ -67,9 +66,7 @@ const AdministracionMenu = () => {
                             <TabPanel value={value} index={1}>
                                 <PermisosUsuario></PermisosUsuario>
                             </TabPanel>
-                            <TabPanel value={value} index={2}>
-                                <ControlApartados></ControlApartados>
-                            </TabPanel>
+
                         </Box>
                     </div>
                 </div>

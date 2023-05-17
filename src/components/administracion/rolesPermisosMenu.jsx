@@ -13,6 +13,7 @@ import Paper from '@mui/material/Paper';
 import AgregarRol from "./roles-permisos/roles/agregarRol";
 import ACtualizarRol from "./roles-permisos/roles/actualizarRol";
 import EliminarRol from "./roles-permisos/roles/eliminarRol";
+import ListadoRoles from "./roles-permisos/roles/listadoRoles";
 
 import AgregarRolPermiso from "./roles-permisos/roles-permisos/agregarRolPermiso";
 import ActualizarRolPermiso from "./roles-permisos/roles-permisos/actualizarRolPermiso";
@@ -51,6 +52,8 @@ const PermisosUsuario = () => {
             setContenido(<ActualizarPermiso />);
         } else if (e.target.value === 'eliminarPermiso') {
             setContenido(<EliminarPermiso />);
+        } else if (e.target.value === 'rolesListado') {
+            setContenido(<ListadoRoles />);
         }
     }
 
@@ -77,6 +80,7 @@ const PermisosUsuario = () => {
                                             <FormControlLabel value="agregarRol" control={<Radio />} label="Agregar Rol" />
                                             <FormControlLabel value="actualizarRol" control={<Radio />} label="Actualizar Rol" />
                                             <FormControlLabel value="eliminarRol" control={<Radio />} label="Eliminar Rol" />
+                                            <FormControlLabel value="rolesListado" control={<Radio />} label="Listado Roles" />
                                         </RadioGroup>
                                     </FormControl>
                                 </AccordionDetails>
