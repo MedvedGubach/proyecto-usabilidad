@@ -1,4 +1,4 @@
-import { Fragment, React, useState } from "react";
+import { Fragment, React, useState, useEffect } from "react";
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -14,6 +14,11 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [nip, setNip] = useState('');
 
+    useEffect(() => {
+
+    }, [])
+
+
     const authUsuario = (e) => {
         e.preventDefault();
         if (email === '' || nip === '') {
@@ -26,6 +31,8 @@ const Login = () => {
                 console.log(response);
                 if (response.data.message === 'Successful login.') {
                     sessionStorage.setItem('token', response.data.jwt);
+                    sessionStorage.setItem('rol', response.data.rol);
+                    sessionStorage.setItem('id', response.data.id);
                     const split = response.data.jwt.split('.');
                     console.log(split);
                     console.log('token', response.data.jwt);

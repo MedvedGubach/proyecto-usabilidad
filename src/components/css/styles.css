@@ -37,6 +37,22 @@
     transform: scale(0.99);
 }
 
+.apartado-5{
+    cursor: pointer;
+background: linear-gradient(180deg, rgba(215,12,166,1) 76%, rgba(157,33,135,1) 92%);
+}
+.apartado-5:active{
+    transform: scale(0.99);
+}
+
+.apartado-6{
+    cursor: pointer;
+background: linear-gradient(180deg, rgba(18,213,207,1) 77%, rgba(30,171,182,1) 100%);
+}
+.apartado-6:active{
+    transform: scale(0.99);
+}
+
 .card-text-cac{
     font-size: 2.5vh;
     font-weight: bold;

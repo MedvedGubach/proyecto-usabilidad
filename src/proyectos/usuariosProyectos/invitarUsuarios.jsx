@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import Autocomplete from '@mui/material/Autocomplete';
 import axios from 'axios';
 import { ToastContainer, toast } from "react-toastify";
-
+import EmailIcon from '@mui/icons-material/Email';
 const InvitarUsuarios = () => {
 
     const [valueUsuarios, setValueUsuarios] = useState(null);
@@ -30,39 +30,43 @@ const InvitarUsuarios = () => {
         });
     }
 
-    const getProyectoId = () => {
-        /* axios.get('http://localhost/backend-usabilidad-main/userServices/usuarios/listarUsuarios.php').then(function (response) {
+    const getProyectos = () => {
+        axios.get('http://localhost/backend-usabilidad-main/userServices/proyectos/listarProyectos.php').then(function (response) {
             console.log(response.data);
             const array = [];
             for (let x = 0; x < response.data.length; x++) {
                 console.log(response.data[x].Id)
-                array.push({ label: response.data[x].Nombre + ' ' + response.data[x].Apellidos, value: response.data[x].Id });
+                array.push({ label: response.data[x].nombre_proyecto, value: response.data[x].Id });
             }
-            setUsuariosArray(array);
-        }); */
+            setProyectosArray(array);
+        });
     }
-
-
 
     const usuarioChange = (v) => {
         seTUsuarioId(v.value);
     }
 
     const proyectoChange = (v) => {
-
+        setProyectoId(v.label);
     }
 
     const invitarUsuario = () => {
         if (inputValueProyecto === '' || inputValueUsuarios === '') {
             toast.warning('Todos los campos son obligatorios', { theme: "dark", position: "top-center", toastId: 'warning1' });
         } else {
+            const url = 'http://localhost/backend-usabilidad-main/userServices/proyectos/invitarUsuario.php';
+            let fData = new FormData();
 
+            fData.append('nombre_proyecto', proyectoId);
+            fData.append('usuario', usuarioId);
+
+            axios.post(url, fData).then(response => alert(response.data)).catch(error => alert(error));
         }
     }
 
     useEffect(() => {
         getUsuarioId();
-        getProyectoId();
+        getProyectos();
     }, [])
 
 
@@ -104,9 +108,9 @@ const InvitarUsuarios = () => {
                     </div>
                 </div>
 
-                <div className="row">
+                <div className="row | mb-4">
                     <div className="col-12 | col-md-6 | col-sm-12">
-                        <Button onClick={invitarUsuario} color="primary" variant="contained">Invitar Usuario</Button>
+                        <Button onClick={invitarUsuario} color="primary" variant="contained" endIcon={<EmailIcon />}>Invitar Usuario</Button>
                     </div>
                 </div>
             </div>

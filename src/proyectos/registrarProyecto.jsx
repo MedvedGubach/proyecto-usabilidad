@@ -37,10 +37,11 @@ const RegistrarProyecto = () => {
         if (inputValueUsuarios === '') {
             toast.warning('Todos los campos son obligatorios', { theme: "dark", position: "top-center", toastId: 'warning1' });
         } else {
-            const url = 'http://localhost/backend-usabilidad-main/userServices/usuarios/actualizarUsuario.php';
+            const url = 'http://localhost/backend-usabilidad-main/userServices/proyectos/agregarProyecto.php';
             let fData = new FormData();
 
-            fData.append('Id', idUsuario);
+            fData.append('nombre_proyecto', nombreProyecto);
+            fData.append('dueno_proyecto', idUsuario);
 
             axios.post(url, fData).then(response => alert(response.data)).catch(error => alert(error));
         }

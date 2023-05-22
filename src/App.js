@@ -12,6 +12,8 @@ import ControlModulos from './components/administracion/controlModulos.jsx';
 import IniciarSesionCoord from './components/iniciarSesionCoord.jsx';
 import ProyectosMenu from './proyectos/proyectosMenu';
 import GestionGrupos from './components/gestion-grupos/gestionGrupos';
+import EvaluarProyectos from './proyectos/evaluarProyectos/evaluarProyectos.jsx';
+import TableroProyectos from './proyectos/tableroProyectos';
 import { Routes, Route } from "react-router-dom"
 import { Fragment } from 'react';
 
@@ -31,6 +33,8 @@ function App() {
         <Route path='/Proyectos-Menu' element={<ProyectosMenu />}></Route>
         <Route path='/Sesion-Coordinador' element={<IniciarSesionCoord />}></Route>
         <Route path='/Gestion-Grupos' element={<GestionGrupos />}></Route>
+        <Route path='/Evaluar-Proyectos' element={<EvaluarProyectos />}></Route>
+        <Route path='/Resultados' element={<TableroProyectos />}></Route>
         <Route path="*" element={<p>Ruta No Encontrada</p>} />
       </Routes>
 

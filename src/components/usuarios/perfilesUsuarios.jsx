@@ -1,17 +1,11 @@
 import { Fragment, React, useState, useEffect } from "react";
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
 import TextField from '@mui/material/TextField';
 import Avatar from '@mui/material/Avatar';
 import Autocomplete from '@mui/material/Autocomplete';
 import Paper from '@mui/material/Paper';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
-import { deepOrange, deepPurple } from '@mui/material/colors';
+import { deepOrange } from '@mui/material/colors';
 
 
 const PerfilesUsuarios = () => {
@@ -22,25 +16,13 @@ const PerfilesUsuarios = () => {
 
     const [idUsuario, setIdUsuario] = useState('');
     const [nombre, setNombre] = useState('');
+    const [participacionesArray, setParticipacionesArray] = useState([]);
 
     const [mostrarContenido, setMostrarContenido] = useState(false);
     const [mostrarTabla, setMostrarTabla] = useState(false);
 
-    function createData(name, interfaz, usabilidad, intuitivo, accesibilidad) {
-        return { name, interfaz, usabilidad, intuitivo, accesibilidad };
-    }
-
-    const rows = [
-        createData('Proyecto 1', 10, 6.0, 10, 4.0,),
-        createData('Proyecto 2', 10, 9.0, 10, 4.3,),
-        createData('Proyecto 3', 10, 10, 10, 6.0,),
-        createData('Proyecto 4', 10, 3.7, 10, 4.3,),
-        createData('Proyecto 5', 10, 10, 10, 3.9,),
-    ];
-
     const getUsuarioId = () => {
         axios.get('http://localhost/backend-usabilidad-main/userServices/usuarios/listarUsuarios.php').then(function (response) {
-            console.log(response.data);
             const array = [];
             for (let x = 0; x < response.data.length; x++) {
                 console.log(response.data[x].Id)
@@ -56,6 +38,16 @@ const PerfilesUsuarios = () => {
         setNombre(v.label);
         setMostrarContenido(true);
         setMostrarTabla(true);
+        console.log('participaciones array', participacionesArray)
+
+        const url = 'http://localhost/backend-usabilidad-main/userServices/proyectos/listarParticipaciones.php';
+        let fData = new FormData();
+
+        fData.append('id', v.value);
+        axios.post(url, fData).then(response => {
+            console.log(response.data)
+            setParticipacionesArray(response.data);
+        }).catch(error => alert(error));
     }
 
     useEffect(() => {
@@ -66,8 +58,16 @@ const PerfilesUsuarios = () => {
         <Fragment>
             <div className="container">
                 <Paper elevation={6}>
-                    <div className="row | mb-4">
-                        <div className="col-12 | col-md-6 | col-sm-12">
+
+
+                    <div className="row | mb-2 | mt-2 | ml-4">
+                        <div className="col-12 | col-md-4 | col-sm-12">
+                            <label>Perfiles de Usuario</label>
+                        </div>
+                    </div>
+
+                    <div className="row | mb-4 | ml-4">
+                        <div className="col-12 | col-md-6 | col-sm-12 | mt-4">
                             <Autocomplete
                                 freeSolo
                                 value={valueUsuario}
@@ -81,7 +81,7 @@ const PerfilesUsuarios = () => {
                     </div>
 
                     {mostrarContenido ?
-                        <div className="row | mb-4">
+                        <div className="row | mb-4 | ml-4">
                             <div className=" col-12 | col-md-1 | col-sm-12 |">
                                 <Avatar sx={{ bgcolor: deepOrange[500] }}>{idUsuario}</Avatar>
                             </div>
@@ -97,37 +97,39 @@ const PerfilesUsuarios = () => {
 
 
                     {mostrarTabla ?
-                        <div className="row | mb-4">
-                            <div className="col-12 | col-md-8 | col-sm-12">
-                                <TableContainer component={Paper}>
-                                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                                        <TableHead>
-                                            <TableRow>
-                                                <TableCell>Proyecto</TableCell>
-                                                <TableCell align="right">Interfaz</TableCell>
-                                                <TableCell align="right">Usabilidad</TableCell>
-                                                <TableCell align="right">Intuitivo</TableCell>
-                                                <TableCell align="right">Accesibilidad</TableCell>
-                                            </TableRow>
-                                        </TableHead>
-                                        <TableBody>
-                                            {rows.map((row) => (
-                                                <TableRow
-                                                    key={row.name}
-                                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                                >
-                                                    <TableCell component="th" scope="row">
-                                                        {row.name}
-                                                    </TableCell>
-                                                    <TableCell align="right">{row.interfaz}</TableCell>
-                                                    <TableCell align="right">{row.usabilidad}</TableCell>
-                                                    <TableCell align="right">{row.intuitivo}</TableCell>
-                                                    <TableCell align="right">{row.accesibilidad}</TableCell>
-                                                </TableRow>
-                                            ))}
-                                        </TableBody>
-                                    </Table>
-                                </TableContainer>
+                        <div className="row | mb-4 | ml-4">
+                            <div className='col-12 | col-md-8 | mb-4 | table-wrapper-scroll-y my-custom-scrollbar'>
+                                <table className="table | table table-bordered table-striped mb-0 ">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Evaluador</th>
+                                            <th scope="col">Nombre Proyecto</th>
+                                            <th scope="col">Interfaz</th>
+                                            <th scope="col">Usabilidad</th>
+                                            <th scope="col">Intuitivo</th>
+                                            <th scope="col">Accesibilidad</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        {participacionesArray
+                                            ? participacionesArray.map(
+                                                (participacion, index) => (
+                                                    <Fragment key={index}>
+                                                        <tr>
+                                                            <td> {`${participacion.evaluador} - ${nombre}`} </td>
+                                                            <td> {participacion.nombre_proyecto} </td>
+                                                            <td> {participacion.interfaz} </td>
+                                                            <td> {participacion.usabilidad} </td>
+                                                            <td> {participacion.intuitivo} </td>
+                                                            <td> {participacion.accesibilidad} </td>
+                                                        </tr>
+                                                    </Fragment>
+                                                )
+                                            )
+                                            : ""}
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                         : null}

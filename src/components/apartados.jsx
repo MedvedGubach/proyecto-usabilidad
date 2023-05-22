@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import { Button, Card, CardBody, CardImg, CardTitle, CardText, } from 'reactstrap';
-import { Link } from "react-router-dom";
+import { Card, CardBody, CardImg, CardTitle, CardText, } from 'reactstrap';
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import './css/styles.css';
@@ -9,12 +8,12 @@ const Apartados = () => {
     const navigate = useNavigate();
     const token = sessionStorage.getItem('token');
     const rol = sessionStorage.getItem('rol');
-    console.log(token);
+    const id = sessionStorage.getItem('id');
 
     const authLogin = () => {
         if (token == null) {
             toast.warning('Error, Favor de Iniciar Sesión', { theme: "dark", position: "top-center", toastId: 'error1' });
-            navigate("/");
+            navigate("/Administracion");
         } else {
             console.log('login')
         }
@@ -26,12 +25,13 @@ const Apartados = () => {
 
 
     const authAdministrador = () => {
-        navigate("/Administracion-Menu");
-        /* if (rol == 'Administrador') {
+
+        if (rol == 'Administrador') {
             navigate("/Administracion-Menu");
         } else {
             toast.warning('No Cuentas Con Acceso a Este Apartado', { theme: "dark", position: "top-center", toastId: 'error1' });
-        } */
+        }
+
     }
 
     const authUsuarios = () => {
@@ -43,7 +43,19 @@ const Apartados = () => {
     }
 
     const authGestionGrupos = () => {
-        navigate("/Gestion-Grupos");
+        if (rol == 'Administrador') {
+            navigate("/Gestion-Grupos");
+        } else {
+            toast.warning('No Cuentas Con Acceso a Este Apartado', { theme: "dark", position: "top-center", toastId: 'error1' });
+        }
+    }
+
+    const authEvaluarProyectos = () => {
+        navigate("/Evaluar-Proyectos");
+    }
+
+    const authResultados = () => {
+        navigate('/Resultados');
     }
 
     return (
@@ -94,21 +106,19 @@ const Apartados = () => {
                     </div>
 
                     <div className='col-12 col-md-4 | mb-5 |'>
-                        <Link to="/Login-Coord">
-                            <Card>
-                                <CardImg className='img-apartados |' ></CardImg>
-                                <CardBody>
-                                    <CardTitle className='card-text-cac |'>Login Coord Test</CardTitle>
-                                    <CardText></CardText>
-                                </CardBody>
-                            </Card>
-                        </Link>
+                        <Card onClick={authEvaluarProyectos} className="apartado-5">
+                            <CardImg className='img-apartados |' ></CardImg>
+                            <CardBody>
+                                <CardTitle className='card-text-cac |'>Evaluar Proyectos</CardTitle>
+                                <CardText></CardText>
+                            </CardBody>
+                        </Card>
                     </div>
                     <div className='col-12 col-md-4 |'>
-                        <Card>
+                        <Card onClick={authResultados} className="apartado-6">
                             <CardImg className='img-apartados |'></CardImg>
                             <CardBody>
-                                <CardTitle className='card-text-cac |'>Apartado 6</CardTitle>
+                                <CardTitle className='card-text-cac |'>Resultados</CardTitle>
                                 <CardText></CardText>
                             </CardBody>
                         </Card>

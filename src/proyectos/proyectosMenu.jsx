@@ -7,8 +7,7 @@ import PropTypes from 'prop-types';
 
 import MenuUsuarios from './usuariosProyectos/usuariosProyectosMenu';
 import RegistrarProyecto from './registrarProyecto.jsx';
-import EvaluacionProyectos from "./usuariosProyectos/evaluacionProyectos";
-import TableroProyectos from './tableroProyectos.jsx';
+
 
 function TabPanel(props) {
 
@@ -59,18 +58,14 @@ const ProyectosMenu = () => {
                         <Box sx={{ width: '100%' }}>
                             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                                    <Tab label="Evaluación Proyectos" {...a11yProps(0)} />
-                                    <Tab label="Registrar Datos Proyecto" {...a11yProps(1)} />
-                                    <Tab label="Usuarios Proyectos" {...a11yProps(2)} />
+                                    <Tab label="Registrar Datos Proyecto" {...a11yProps(0)} />
+                                    <Tab label="Usuarios Proyectos" {...a11yProps(1)} />
                                 </Tabs>
                             </Box>
                             <TabPanel value={value} index={0}>
-                                <EvaluacionProyectos></EvaluacionProyectos>
-                            </TabPanel>
-                            <TabPanel value={value} index={1}>
                                 <RegistrarProyecto></RegistrarProyecto>
                             </TabPanel>
-                            <TabPanel value={value} index={2}>
+                            <TabPanel value={value} index={1}>
                                 <MenuUsuarios></MenuUsuarios>
                             </TabPanel>
                         </Box>
