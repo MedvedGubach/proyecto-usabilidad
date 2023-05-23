@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -16,8 +16,24 @@ import EliminarGrupo from "./eliminarGrupo";
 import AgregarUsuario from "./agregarUsuario";
 import EliminarUsuario from "./eliminarUsuario";
 import ActualizarUsuarioGrupo from "./actualizarUsuarioGrupo";
+import { useNavigate } from "react-router-dom";
+
 
 const ControlModulos = () => {
+
+
+    const navigate = useNavigate();
+    const token = sessionStorage.getItem('token');
+    const rol = sessionStorage.getItem('rol');
+
+    useEffect(() => {
+        if (rol != 'Administrador' && rol != 'Coordinador') {
+            navigate("/Inicio");
+        } else if (token == null) {
+            navigate("/");
+        }
+    }, [])
+
     const [valueRadios, setValueRadios] = useState('');
     const [contenido, setContenido] = useState('');
     const [expandedRegistro, setExpandedRegistro] = useState(false);

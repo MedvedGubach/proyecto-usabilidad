@@ -1,7 +1,4 @@
 import { Fragment, React, useState, useEffect } from "react";
-import TextField from '@mui/material/TextField';
-import Avatar from '@mui/material/Avatar';
-import Autocomplete from '@mui/material/Autocomplete';
 import Paper from '@mui/material/Paper';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
@@ -79,7 +76,5 @@ const TableroProyectos = () => {
         </Fragment>
     );
 }
-
-
 
 export default TableroProyectos;

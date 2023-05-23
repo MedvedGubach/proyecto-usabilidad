@@ -113,7 +113,7 @@ const ActualizarGrupo = () => {
                             inputValue={inputValueUsuarios}
                             onInputChange={(_, v) => setInputValueUsuarios(v)}
                             options={usuariosArray}
-                            renderInput={(params) => <TextField {...params} label="Seleccione un Usuario" />}
+                            renderInput={(params) => <TextField {...params} label="Seleccione un Moderador" />}
                         />
                     </div>
                 </div>

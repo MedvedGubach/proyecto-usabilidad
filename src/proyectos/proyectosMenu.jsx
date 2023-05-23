@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
@@ -7,9 +7,22 @@ import PropTypes from 'prop-types';
 
 import MenuUsuarios from './usuariosProyectos/usuariosProyectosMenu';
 import RegistrarProyecto from './registrarProyecto.jsx';
+import { useNavigate } from "react-router-dom";
 
 
 function TabPanel(props) {
+
+    const navigate = useNavigate();
+    const token = sessionStorage.getItem('token');
+    const rol = sessionStorage.getItem('rol');
+
+    useEffect(() => {
+        if (rol != 'Administrador' && rol != 'Coordinador' && rol != 'Secretario') {
+            navigate("/Inicio");
+        } else if (token == null) {
+            navigate("/");
+        }
+    }, [])
 
 
     const { children, value, index, ...other } = props;

@@ -15,7 +15,7 @@ const Login = () => {
     const [nip, setNip] = useState('');
 
     useEffect(() => {
-
+        sessionStorage.clear();
     }, [])
 
 
@@ -54,29 +54,42 @@ const Login = () => {
             <ToastContainer></ToastContainer>
             <div className="container |">
                 <Paper elevation={4}>
-                    <div className="row | mb-2">
+                    <div className="row | mb-2 | ml-4">
                         <div className="col-12 | col-md-4 | col-sm-12">
                             <label>Inicio Sesión</label>
                         </div>
                     </div>
 
-                    <div className="row | mb-2">
+                    <div className="row | mb-2 | ml-4">
                         <div className="col-12 | col-md-3 | col-sm-12 |">
                             <TextField fullWidth onChange={(e) => { setEmail(e.target.value); }} id="outlined-basic" label="E-mail" variant="outlined" />
                         </div>
                     </div>
 
-                    <div className="row | mb-2">
+                    <div className="row | mb-2 | ml-4">
                         <div className="col-12 | col-md-3 | col-sm-12 |">
                             <TextField fullWidth onChange={(e) => { setNip(e.target.value); }} id="outlined-basic" label="NIP" variant="outlined" type="password" />
                         </div>
                     </div>
 
-                    <div className="row | ">
+
+                    <div className="row | mt-4 | ml-4">
                         <div className="col-12 | col-md-4 | col-sm-12 |">
                             <Button onClick={authUsuario} variant="contained">Iniciar Sesión</Button>
                         </div>
                     </div>
+
+                    <div className="row | mt-4 | ml-4">
+                        <div className="col-12 | col-md-1 | col-sm-12 | mb-4">
+                            <a href="/Registrarse">Registrate</a>
+                        </div>
+
+                        <div className="col-12 | col-md-2 | col-sm-12 | mb-4">
+                            <a href="/Recuperar-NIP">¿Olvidaste tu NIP?</a>
+                        </div>
+                    </div>
+
+
                 </Paper>
             </div>
         </Fragment>

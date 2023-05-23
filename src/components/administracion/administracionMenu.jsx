@@ -4,11 +4,27 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
+import { useNavigate } from "react-router-dom";
 
 import ControlModulos from "./controlModulos";
 import PermisosUsuario from "./rolesPermisosMenu";
 import ControlApartados from "./controlApartados";
+import { useEffect } from "react";
 function TabPanel(props) {
+
+    const navigate = useNavigate();
+    const token = sessionStorage.getItem('token');
+    const rol = sessionStorage.getItem('rol');
+
+    useEffect(() => {
+        if (rol != 'Administrador') {
+            navigate("/Inicio");
+        } else if (token == null) {
+            navigate("/");
+        }
+    }, [])
+
+
     const { children, value, index, ...other } = props;
 
     return (

@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import '../css/styles.css'
 
-const RegistrarCoordinador = () => {
+const AgregarUsuario = () => {
 
     const [valueRoles, setValueRoles] = useState(null);
     const [inputValueRoles, setInputValueRoles] = useState('');
@@ -42,7 +42,7 @@ const RegistrarCoordinador = () => {
     }
 
 
-    const registrarCoordinador = () => {
+    const agregarUsuario = () => {
         if (nombre === '' || apellidos === '' || telefono === '' || email === '' || rol === '' || confNip === '' || nip === '') {
             toast.warning('Todos los campos son obligatorios', { theme: "dark", position: "top-center", toastId: 'warning1' });
         } else {
@@ -116,7 +116,7 @@ const RegistrarCoordinador = () => {
                 </div>
                 <div className="row pb-4">
                     <div className="col-12 | col-md-6 | col-sm-12">
-                        <Button onClick={registrarCoordinador} variant="contained">Registrar Usuario {/* Coordinador */}</Button>
+                        <Button onClick={agregarUsuario} variant="contained">Registrar Usuario {/* Coordinador */}</Button>
                     </div>
                 </div>
             </div>
@@ -125,4 +125,4 @@ const RegistrarCoordinador = () => {
 }
 
 
-export default RegistrarCoordinador;
+export default AgregarUsuario;

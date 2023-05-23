@@ -4,6 +4,8 @@ import Button from '@mui/material/Button';
 import Autocomplete from '@mui/material/Autocomplete';
 import { ToastContainer, toast } from "react-toastify";
 import axios from 'axios';
+import Paper from '@mui/material/Paper';
+
 import 'react-toastify/dist/ReactToastify.css';
 
 const RegistrarProyecto = () => {
@@ -56,36 +58,38 @@ const RegistrarProyecto = () => {
             <ToastContainer></ToastContainer>
             <div className="container">
 
-                <div className="row | mb-2 | mt-2">
-                    <div className="col-12 | col-md-4 | col-sm-12">
-                        <label>Registrar Proyecto</label>
+                <Paper elevation={6}>
+                    <div className="row | mb-2 | mt-2 | ml-4">
+                        <div className="col-12 | col-md-4 | col-sm-12 | mt-4">
+                            <label>Registrar Proyecto</label>
+                        </div>
                     </div>
-                </div>
 
-                <div className="row pb-4 | pt-4">
-                    <div className="col-12 | col-md-6 | col-sm-12">
-                        <Autocomplete
-                            freeSolo
-                            value={valueUsuario}
-                            onChange={(_, v) => actualizarUsuarioChange(v)}
-                            inputValue={inputValueUsuarios}
-                            onInputChange={(_, v) => setInputValueUsuarios(v)}
-                            options={usuariosArray}
-                            renderInput={(params) => <TextField {...params} label="Dueño del Proyecto" />}
-                        />
+                    <div className="row pb-4 | pt-4 | ml-4">
+                        <div className="col-12 | col-md-6 | col-sm-12">
+                            <Autocomplete
+                                freeSolo
+                                value={valueUsuario}
+                                onChange={(_, v) => actualizarUsuarioChange(v)}
+                                inputValue={inputValueUsuarios}
+                                onInputChange={(_, v) => setInputValueUsuarios(v)}
+                                options={usuariosArray}
+                                renderInput={(params) => <TextField {...params} label="Dueño del Proyecto" />}
+                            />
+                        </div>
                     </div>
-                </div>
-                <div className="row pb-4 | pt-4">
-                    <div className="col-12 | col-md-6 | col-sm-12">
-                        <TextField fullWidth onChange={(e) => { setNombreProyecto(e.target.value); console.log(e.target.value) }} id="outlined-basic" label="Nombre" variant="outlined" />
+                    <div className="row pb-4 | pt-4 | ml-4">
+                        <div className="col-12 | col-md-6 | col-sm-12">
+                            <TextField fullWidth onChange={(e) => { setNombreProyecto(e.target.value); console.log(e.target.value) }} id="outlined-basic" label="Nombre" variant="outlined" />
+                        </div>
                     </div>
-                </div>
 
-                <div className="row pb-4">
-                    <div className="col-12 | col-md-6 | col-sm-12">
-                        <Button onClick={registrarProyecto} variant="contained">Registrar Proyecto</Button>
+                    <div className="row pb-4 | ml-4">
+                        <div className="col-12 | col-md-6 | col-sm-12">
+                            <Button onClick={registrarProyecto} variant="contained">Registrar Proyecto</Button>
+                        </div>
                     </div>
-                </div>
+                </Paper>
             </div>
         </Fragment>
     );

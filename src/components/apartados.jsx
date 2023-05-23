@@ -35,15 +35,23 @@ const Apartados = () => {
     }
 
     const authUsuarios = () => {
-        navigate("/Usuarios");
+        if (rol == 'Administrador' || rol == 'Coordinador' || rol == 'Secretario') {
+            navigate("/Usuarios");
+        } else {
+            toast.warning('No Cuentas Con Acceso a Este Apartado', { theme: "dark", position: "top-center", toastId: 'error1' });
+        }
     }
 
     const authTableroProyectos = () => {
-        navigate("/Proyectos-Menu");
+        if (rol == 'Administrador' || rol == 'Coordinador' || rol == 'Secretario') {
+            navigate("/Proyectos-Menu");
+        } else {
+            toast.warning('No Cuentas Con Acceso a Este Apartado', { theme: "dark", position: "top-center", toastId: 'error1' });
+        }
     }
 
     const authGestionGrupos = () => {
-        if (rol == 'Administrador') {
+        if (rol == 'Administrador' || rol == 'Coordinador') {
             navigate("/Gestion-Grupos");
         } else {
             toast.warning('No Cuentas Con Acceso a Este Apartado', { theme: "dark", position: "top-center", toastId: 'error1' });

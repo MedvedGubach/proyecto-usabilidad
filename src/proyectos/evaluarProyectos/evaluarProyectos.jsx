@@ -48,7 +48,7 @@ const EvaluarProyectos = () => {
     const evaluarProyecto = () => {
         console.log('hola button evaluar')
         if (interfaz == '' || usabilidad == '' || intuitivo == '' || accesibilidad == '' || inputValueProyectos == '') {
-            toast.warning('Todos los campos son obligatorioss', { theme: "dark", position: "top-center", toastId: 'warning1' });
+            toast.warning('Todos los campos son obligatorios', { theme: "dark", position: "top-center", toastId: 'warning1' });
         } else {
             if (interfaz < 0 || usabilidad < 0 || intuitivo < 0 || accesibilidad < 0) {
                 toast.warning('La evaluación no puede contener números negativos', { theme: "dark", position: "top-center", toastId: 'warning2' });

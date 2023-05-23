@@ -4,11 +4,25 @@ import Avatar from '@mui/material/Avatar';
 import Autocomplete from '@mui/material/Autocomplete';
 import Paper from '@mui/material/Paper';
 import axios from 'axios';
+import Button from '@mui/material/Button';
 import 'react-toastify/dist/ReactToastify.css';
 import { deepOrange } from '@mui/material/colors';
+import { useNavigate } from "react-router-dom";
 
 
 const PerfilesUsuarios = () => {
+
+    const navigate = useNavigate();
+    const token = sessionStorage.getItem('token');
+    const rol = sessionStorage.getItem('rol');
+
+    useEffect(() => {
+        if (rol != 'Administrador' && rol != 'Coordinador' && rol != 'Secretario') {
+            navigate("/Inicio");
+        } else if (token == null) {
+            navigate("/");
+        }
+    }, [])
 
     const [valueUsuario, setValueUsuario] = useState(null);
     const [inputValueUsuarios, setInputValueUsuarios] = useState('');
@@ -50,6 +64,10 @@ const PerfilesUsuarios = () => {
         }).catch(error => alert(error));
     }
 
+    const eliminarEvaluacion = (v) => {
+        console.log(v);
+    }
+
     useEffect(() => {
         getUsuarioId();
     }, [])
@@ -58,7 +76,6 @@ const PerfilesUsuarios = () => {
         <Fragment>
             <div className="container">
                 <Paper elevation={6}>
-
 
                     <div className="row | mb-2 | mt-2 | ml-4">
                         <div className="col-12 | col-md-4 | col-sm-12">

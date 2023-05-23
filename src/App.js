@@ -3,6 +3,9 @@ import './App.css';
 import Login from './components/login.jsx';
 import LoginCoordinador from './components/loginCoordinador.jsx';
 import Breadcrumbs from './components/breadcrumbs/breadCrumbs';
+import NotFound from './components/notFound';
+import RegistrarUsuario from './components/registrarUsuario.jsx';
+import RecuperarNip from './components/recuperarNip.jsx';
 import Footer from './components/template/Footer.jsx';
 import NavBar from './components/template/Navbar.jsx';
 import Inicio from './components/apartados.jsx';
@@ -22,10 +25,12 @@ function App() {
 
     <Fragment>
       <NavBar></NavBar>
-      {/* <Breadcrumbs></Breadcrumbs> */}
+      <Breadcrumbs></Breadcrumbs>
       <Routes>
         <Route path='/' element={<Login />}></Route>
         <Route path='/Login-Coord' element={<LoginCoordinador />}></Route>
+        <Route path='/Registrarse' element={<RegistrarUsuario />}></Route>
+        <Route path='/Recuperar-NIP' element={<RecuperarNip />}></Route>
         <Route path='/Inicio' element={<Inicio />}></Route>
         <Route path='/Administracion-Menu' element={<AdministracionMenu />}></Route>
         <Route path='/Control-Modulo' element={<ControlModulos />}></Route>
@@ -35,7 +40,7 @@ function App() {
         <Route path='/Gestion-Grupos' element={<GestionGrupos />}></Route>
         <Route path='/Evaluar-Proyectos' element={<EvaluarProyectos />}></Route>
         <Route path='/Resultados' element={<TableroProyectos />}></Route>
-        <Route path="*" element={<p>Ruta No Encontrada</p>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <Footer></Footer>

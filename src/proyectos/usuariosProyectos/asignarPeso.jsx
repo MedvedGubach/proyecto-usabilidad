@@ -11,58 +11,49 @@ const AsignarPeso = () => {
     const [inputValueUsuarios, setInputValueUsuarios] = useState('');
     const [usuariosArray, setUsuariosArray] = useState([]);
 
-    const [valuePeso, setValuePeso] = useState(null);
-    const [inputValuePeso, setInputValuePeso] = useState('');
-    const [pesoArray, setPesoArray] = useState([]);
-
     const [usuarioId, seTUsuarioId] = useState('');
     const [pesoId, setPesoId] = useState('');
 
     const getUsuarioId = () => {
-        axios.get('http://localhost/backend-usabilidad-main/userServices/usuarios/listarUsuarios.php').then(function (response) {
+        axios.get('http://localhost/backend-usabilidad-main/userServices/roles/listarRoles.php').then(function (response) {
             console.log(response.data);
             const array = [];
             for (let x = 0; x < response.data.length; x++) {
                 console.log(response.data[x].Id)
-                array.push({ label: response.data[x].Nombre + ' ' + response.data[x].Apellidos, value: response.data[x].Id });
+                array.push({ label: response.data[x].nombreRol, value: response.data[x].Id });
             }
             setUsuariosArray(array);
         });
     }
 
-    const getPesoId = () => {
-        /* axios.get('http://localhost/backend-usabilidad-main/userServices/usuarios/listarUsuarios.php').then(function (response) {
-            console.log(response.data);
-            const array = [];
-            for (let x = 0; x < response.data.length; x++) {
-                console.log(response.data[x].Id)
-                array.push({ label: response.data[x].Nombre + ' ' + response.data[x].Apellidos, value: response.data[x].Id });
-            }
-            setPesoArray(array);
-        }); */
-    }
-
-
 
     const usuarioChange = (v) => {
-        seTUsuarioId(v.value);
+        console.log(v)
+        seTUsuarioId(v.label);
     }
 
-    const proyectoChange = (v) => {
-
-    }
-
-    const invitarUsuario = () => {
-        if (inputValuePeso === '' || inputValueUsuarios === '') {
+    const asignarPeso = () => {
+        if (pesoId === '' || inputValueUsuarios === '') {
             toast.warning('Todos los campos son obligatorios', { theme: "dark", position: "top-center", toastId: 'warning1' });
         } else {
+            const url = 'http://localhost/backend-usabilidad-main/userServices/proyectos/agregarPeso.php';
+            let fData = new FormData();
+            fData.append('tipo_usuario', usuarioId);
+            fData.append('peso', pesoId);
 
+            axios.post(url, fData).then(response => {
+                if (response.data == 'Peso agregado correctamente') {
+                    toast.success('Peso agregado correctamente', { theme: "dark", position: "top-center", toastId: 'success1' });
+                } else {
+                    toast.error('Error al agregar el peso', { theme: "dark", position: "top-center", toastId: 'error1' });
+                }
+
+            }).catch(error => alert(error));
         }
     }
 
     useEffect(() => {
         getUsuarioId();
-        getPesoId();
     }, [])
 
 
@@ -92,21 +83,13 @@ const AsignarPeso = () => {
 
                 <div className="row | mb-4 | pt-4">
                     <div className="col-12 | col-md-6 | col-sm-12">
-                        <Autocomplete
-                            freeSolo
-                            value={valuePeso}
-                            onChange={(_, v) => proyectoChange(v)}
-                            inputValue={inputValuePeso}
-                            onInputChange={(_, v) => setInputValuePeso(v)}
-                            options={pesoArray}
-                            renderInput={(params) => <TextField {...params} label="Seleccione un Peso" />}
-                        />
+                        <TextField onChange={(v) => { setPesoId(v.target.value); console.log(v.target.value); }} InputProps={{ inputProps: { min: 0, max: 10 } }} fullWidth id="outlined-number" label="Number" type="number" InputLabelProps={{ shrink: true, }} />
                     </div>
                 </div>
 
-                <div className="row">
+                <div className="row | mb-4">
                     <div className="col-12 | col-md-6 | col-sm-12">
-                        <Button onClick={invitarUsuario} color="primary" variant="contained">Asignar Peso</Button>
+                        <Button onClick={asignarPeso} color="primary" variant="contained">Asignar Peso</Button>
                     </div>
                 </div>
             </div>
